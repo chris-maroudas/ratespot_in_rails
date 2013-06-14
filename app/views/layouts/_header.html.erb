@@ -1,0 +1,17 @@
+<header class="container">
+  <div class='row'>
+  <h1><%= link_to 'RateSpot.gr', root_path, class: 'span3' %> </h1>
+  <nav class='span6 offset3'>
+    <ul>
+      <% if signed_in? %>
+			<li>Logged as <%= current_user.name %></li>
+          <li><%= link_to 'My Profile', user_path(current_user) %></li>
+          <li><%= link_to 'Post a new review', new_review_path %></li>
+          <li><%= link_to 'Sign Out', signout_path, method: :delete %></li>
+      <% else %>
+          <li><%= link_to 'Sign in', signin_path %></li>
+      <% end %>
+    </ul>
+  </nav>
+  </div>
+</header>

@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@review) do |f|  %>
+
+        <%= render 'shared/error_messages', object: f.object %>
+
+
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+
+        <%= f.label :content %>
+        <%= f.text_area :content %>
+
+
+
+        <%= f.label :category %>
+        <%= f.radio_button :category, "cpu" %> Processors
+        <%= f.radio_button :category, "gpu" %> Graphic cards
+        <%= f.radio_button :category, "storage" %> Storage devices
+        <%= f.radio_button :category, "monitor" %> Monitors/TVs
+        <%= f.radio_button :category, "motherboard" %> Motherboards
+
+        <%= f.label :product %>
+        <%= f.text_field :product %>
+
+        <%= f.radio_button :rating, 1 %> Worst thing every buyed
+        <%= f.radio_button :rating, 2 %> Bad
+        <%= f.radio_button :rating, 3 %> Average
+        <%= f.radio_button :rating, 4 %> Good
+        <%= f.radio_button :rating, 5 %> Excellent
+
+        <%= f.submit "Send", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+  </div>
+</div>
