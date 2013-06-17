@@ -27,6 +27,10 @@ class Review < ActiveRecord::Base
 
 	belongs_to :user
 
+  default_scope order: 'created_at DESC'
+
+
+  before_save :prepare_data
 
 
 	def prepare_data

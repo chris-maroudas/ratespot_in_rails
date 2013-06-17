@@ -14,5 +14,11 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+	before { @user = User.new }
+	subject { @user }
+
+	it { should_not be_valid }
+	it { should respond_to :email }
+
 end

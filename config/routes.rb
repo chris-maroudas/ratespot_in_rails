@@ -6,7 +6,7 @@ Ratespotgr::Application.routes.draw do
 
 
   resources :users
-
+	match 'users/:id/reviews', to: 'users#reviews', as: 'user_reviews'
 
 	root to: 'static_pages#home'
 
