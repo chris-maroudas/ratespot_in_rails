@@ -19,6 +19,9 @@ class User < ActiveRecord::Base
   before_save :prepare_email
   before_save :create_remember_token
 
+  after_update :send_update_email
+  after_save :send_register_email
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
 	validates :name, presence: true, length: { maximum: 40 }
@@ -33,6 +36,8 @@ class User < ActiveRecord::Base
 
 
 
+  private
+
 	def prepare_email
 		self.email = self.email.strip.downcase if self.email
 	end
@@ -40,5 +45,15 @@ class User < ActiveRecord::Base
   def create_remember_token
 	  self.remember_token = SecureRandom.urlsafe_base64
   end
+
+  # Mailing
+
+	def send_update_email
+		UserMailer.updated_user(self).deliver
+	end
+
+	def send_register_email
+		UserMailer.registered_user(self).deliver
+	end
 
 end
