@@ -1,8 +1,10 @@
-<h2><%= object.title  %></h2>
+<h2><%= object.title %></h2>
 <p> <%= truncate(object.content, length: 300, separator: ' ') %>  </p>
-<p> Posted by <%= link_to object.user.name.titleize, object.user  %></p>
+<p> Posted by <%= link_to object.user.name.titleize, object.user %>
+  <date><%= time_ago_in_words(object.created_at) %> ago</date>
+</p>
 <%= link_to 'Read review', object %>
 <% if current_user?(object.user) %>
-<%= link_to 'Edit', edit_review_path(object) %>
-<%= link_to 'Delete', object, method: :delete, confirm: 'Are you sure?'  %>
+    <%= link_to 'Edit', edit_review_path(object) %>
+    <%= link_to 'Delete', object, method: :delete, confirm: 'Are you sure?' %>
 <% end %>

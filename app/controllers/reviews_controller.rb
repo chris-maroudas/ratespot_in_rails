@@ -18,7 +18,7 @@ class ReviewsController < ApplicationController
 	end
 
 	def index
-		@reviews = Review.includes(:user).paginate(page: params[:page], per_page: 1) # avoid N+1 query
+		@reviews = Review.includes(:user).paginate(page: params[:page], per_page: 4) # avoid N+1 query
 	end
 
 	def edit
@@ -38,6 +38,11 @@ class ReviewsController < ApplicationController
 		redirect_to root_path
 		flash[:notice] = 'Review deleted'
 	end
+
+	def category
+		@reviews = Review.includes(:user).where(category: params[:category]).paginate(page: params[:page], per_page: 1)
+	end
+
 
 	def correct_user
 		@review = current_user.reviews.find_by_id(params[:id]) # Check if the accessed review belongs to current user

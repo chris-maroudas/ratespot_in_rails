@@ -7,14 +7,15 @@ class UserMailer < ActionMailer::Base
   #   en.user_mailer.registered_user.subject
   #
   def registered_user(user)
-    @greeting = "Hi, #{user.name}"
-    @user = user
-    mail to: user.email, subject: 'Thanks for registering to Ratespot'
+	  @user = user
+	  @greeting = "Hi, #{@user.name}"
+    mail to: @user.email, subject: 'Thanks for registering to Ratespot'
   end
 
 	def updated_user(user)
-		@greeting = "Hi, #{user.name}"
 		@user = user
-		mail to: user.email, subject: 'Your profile details were updated'
+		@greeting = "Hi, #{@user.name}"
+		mail to: @user.email, subject: 'Your profile details were updated'
 	end
+
 end

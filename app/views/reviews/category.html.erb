@@ -1,0 +1,8 @@
+<% if @reviews.any? %>
+    <% @reviews.each do |review| %>
+
+        <%= render 'shared/preview_review', object: review %>
+
+    <% end %>
+<% end %>
+<%= will_paginate %>

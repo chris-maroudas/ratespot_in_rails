@@ -3,10 +3,13 @@ Ratespotgr::Application.routes.draw do
 
 
   resources :reviews
+  match 'reviews/category/:category', to: 'reviews#category', as: 'category_reviews'
 
 
-  resources :users
-	match 'users/:id/reviews', to: 'users#reviews', as: 'user_reviews'
+  resources :users do
+	  get :reviews, on: :member
+  end
+
 
 	root to: 'static_pages#home'
 
