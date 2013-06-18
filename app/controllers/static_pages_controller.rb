@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
-  def home
+
+	def home
 		@reviews = Review.limit(10).all
   end
 
@@ -8,4 +9,5 @@ class StaticPagesController < ApplicationController
 
   def about
   end
+
 end
