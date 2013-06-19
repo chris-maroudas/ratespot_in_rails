@@ -1,3 +1,4 @@
+<%= gravatar_for(@user) %>
 <h2><%= @user.name.titleize %></h2>
 <h3><%= @user.email %></h3>
 <p><%= pluralize(@user.reviews.count, 'review') %>
