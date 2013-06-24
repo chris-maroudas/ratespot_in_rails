@@ -22,6 +22,7 @@ class ReviewsController < ApplicationController
 	end
 
 	def edit
+		#Instance var @review, defined at correct_user
 	end
 
 	def update
@@ -50,4 +51,3 @@ class ReviewsController < ApplicationController
 	end
 
 end
-
