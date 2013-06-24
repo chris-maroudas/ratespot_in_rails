@@ -1,7 +1,16 @@
-<% @reviews.each do |review| %>
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <% provide(:title, 'Reviews') %>
 
-<%= render 'shared/preview_review', object: review %>
+      <% @reviews.each do |review| %>
 
-<% end  %>
+          <%= render 'shared/preview_review', object: review %>
 
-<%= will_paginate  %>
+      <% end %>
+
+      <%= will_paginate %>
+    </div>
+  </div>
+</div>
+

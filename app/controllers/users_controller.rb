@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 	before_filter :correct_user, only: [:edit, :update, :destroy] #defines also an instance var for those
 
 	def new
+		redirect_to root_url if signed_in?
 		@user = User.new
 	end
 

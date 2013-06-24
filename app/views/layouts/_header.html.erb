@@ -1,17 +1,21 @@
-<header class="container">
+<header class="container top">
   <div class='row'>
-    <h1><%= link_to 'RateSpot.gr', root_path, class: 'span3' %> </h1>
-    <nav class='span6 offset3'>
+    <nav class='span7 offset5  user_menu'>
       <ul>
         <% if signed_in? %>
-            <li>Logged as <%= current_user.name %></li>
+	        <li><%= current_user.name.titleize %></li>
             <li><%= link_to 'My Profile', user_path(current_user) %></li>
-            <li><%= link_to 'Post a new review', new_review_path %></li>
+            <li><%= link_to 'Post a review', new_review_path %></li>
             <li><%= link_to 'Sign Out', signout_path, method: :delete %></li>
-        <% else %>
+            <%= gravatar_for(current_user, size: 24) %>
+      <% else %>
             <li><%= link_to 'Sign in', signin_path %></li>
         <% end %>
       </ul>
     </nav>
   </div>
 </header>
+
+<div class="logo">
+ <a href="/"><%= image_tag('ratespot.png', alt: 'Ratespot logo', class: 'logo') %></a>
+</div>

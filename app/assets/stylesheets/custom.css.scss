@@ -15,9 +15,11 @@ $grayMediumLight: #eaeaea;
 html {
   overflow-y: scroll;
 }
-
+* {
+  box-sizing: border-box;
+}
 body {
-  padding-top: 60px;
+  background-image: url('background.jpg');
 }
 
 section {
@@ -28,29 +30,25 @@ textarea {
   resize: vertical;
 }
 
-.center {
-  text-align: center;
-  h1 {
-    margin-bottom: 10px;
-  }
+.span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11, .span12 {
+  padding: 1em;
 }
-
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
+  font-family: "proxima-nova-condensed";
+  font-weight: 600;
 }
 
 h1 {
   font-size: 3em;
-  letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
 }
 
 h2 {
-  font-size: 1.7em;
-  letter-spacing: -1px;
+  font-size: 2em;
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
@@ -60,79 +58,38 @@ h2 {
 p {
   font-size: 1.1em;
   line-height: 1.7em;
+  font-family: 'Rooney-web';
+  color: #555;
+}
+
+li, a {
+  font-family: 'proxima-nova-condensed';
+}
+
+.container {
+  background-color: #fafafa;
 }
 
 
-/* header */
+.container.top {
+  background-color: black;
+  padding-top: 5px;
+}
 
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-  line-height: 1;
-  &:hover {
-    color: white;
-    text-decoration: none;
-  }
+img.logo {
+  padding: 20px 0px;
 }
 
 
 
-/* sidebar */
 
-aside {
-  section {
-    padding: 10px 0;
-    border-top: 1px solid $grayLighter;
-    &:first-child {
-      border: 0;
-      padding-top: 0;
-    }
-    span {
-      display: block;
-      margin-bottom: 3px;
-      line-height: 1;
-    }
-    h1 {
-      font-size: 1.4em;
-      text-align: left;
-      letter-spacing: -1px;
-      margin-bottom: 3px;
-      margin-top: 0px;
-    }
-  }
-}
 
 .gravatar {
   float: left;
-  margin-right: 10px;
+  margin-left: 10px;
 }
 
-.stats {
-  overflow: auto;
-  a {
-    float: left;
-    padding: 0 10px;
-    border-left: 1px solid $grayLighter;
-    color: gray;
-    &:first-child {
-      padding-left: 0;
-      border: 0;
-    }
-    &:hover {
-      text-decoration: none;
-      color: $blue;
-    }
-  }
-  strong {
-    display: block;
-  }
-}
+
 
 .user_avatars {
   overflow: auto;
@@ -257,4 +214,39 @@ aside {
   margin-top: 45px;
   @include box_sizing;
   font-family: monospace;
+}
+
+
+
+
+nav.user_menu {
+  ul {
+    list-style: none;
+    margin: 0px;
+    li {
+      float: left;
+      border-left: 1px solid #666;
+      padding: 0 1em;
+      color: #aaa;
+      font-size: 1.2em;
+      &:first-child {
+        border-left: none;
+      }
+    }
+  }
+}
+
+header.main_menu {
+  background-color: black;
+  ul {
+    list-style: none;
+    li {
+      float: left;
+      a {
+        font-size: 20px;
+        padding: 0px 20px;
+        color: #ddd;
+      }
+    }
+  }
 }

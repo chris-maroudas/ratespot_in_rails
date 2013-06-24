@@ -1,3 +1,5 @@
+<% provide(:title, params[:category].titleize) %>
+
 <% if @reviews.any? %>
     <% @reviews.each do |review| %>
 
