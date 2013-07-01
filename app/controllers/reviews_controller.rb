@@ -44,6 +44,9 @@ class ReviewsController < ApplicationController
 		@reviews = Review.includes(:user).where(category: params[:category]).paginate(page: params[:page], per_page: 1)
 	end
 
+	def search
+		@reviews = Review.search(params[:search])
+	end
 
 	def correct_user
 		@review = current_user.reviews.find_by_id(params[:id]) # Check if the accessed review belongs to current user

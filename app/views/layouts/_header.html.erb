@@ -1,14 +1,21 @@
 <header class="container top">
   <div class='row'>
-    <nav class='span7 offset5  user_menu'>
+    <div class="span4 search_bar">
+      <%= form_tag search_path do %>
+          <%= text_field_tag :search, params[:search], id: 'search_field' %>
+          <%= submit_tag 'Search', id: 'submit_button' %>
+      <% end %>
+    </div>
+    <nav class='span8 user_menu'>
+
       <ul>
         <% if signed_in? %>
-	        <li><%= current_user.name.titleize %></li>
+            <li><%= current_user.name.titleize %></li>
             <li><%= link_to 'My Profile', user_path(current_user) %></li>
             <li><%= link_to 'Post a review', new_review_path %></li>
             <li><%= link_to 'Sign Out', signout_path, method: :delete %></li>
             <%= gravatar_for(current_user, size: 24) %>
-      <% else %>
+        <% else %>
             <li><%= link_to 'Sign in', signin_path %></li>
         <% end %>
       </ul>
@@ -17,5 +24,5 @@
 </header>
 
 <div class="logo">
- <a href="/"><%= image_tag('ratespot.png', alt: 'Ratespot logo', class: 'logo') %></a>
+  <a href="/"><%= image_tag('ratespot.png', alt: 'Ratespot logo', class: 'logo') %></a>
 </div>

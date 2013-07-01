@@ -33,9 +33,17 @@ class Review < ActiveRecord::Base
   before_save :prepare_data
 
 
+  private
+
 	def prepare_data
 		self.title = self.title.strip.downcase
 		self.content = self.content.strip.downcase
 		self.product = self.product.strip.downcase
 	end
+
+	def self.search(term)
+		search_condition = "%" + term + "%"
+		find(:all, :conditions => ['title LIKE ? OR product LIKE?', search_condition, search_condition])
+	end
+
 end
