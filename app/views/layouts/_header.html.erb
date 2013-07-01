@@ -14,7 +14,7 @@
             <li><%= link_to 'My Profile', user_path(current_user) %></li>
             <li><%= link_to 'Post a review', new_review_path %></li>
             <li><%= link_to 'Sign Out', signout_path, method: :delete %></li>
-            <%= gravatar_for(current_user, size: 24) %>
+            <%= gravatar_for(current_user, size: 28) %>
         <% else %>
             <li><%= link_to 'Sign in', signin_path %></li>
         <% end %>

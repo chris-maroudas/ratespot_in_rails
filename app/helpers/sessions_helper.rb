@@ -32,7 +32,7 @@ module SessionsHelper
 	def signed_in_user
 		unless signed_in?
 			store_location
-			redirect_to signin_path
+			redirect_to signin_path, notice: 'You must sign in first!'
 		end
 	end
 
