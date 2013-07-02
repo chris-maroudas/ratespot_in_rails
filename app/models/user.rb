@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
 	has_secure_password
 
-  before_save :prepare_email
+  before_validation :prepare_email
   before_save :create_remember_token
 
   after_update :send_update_email

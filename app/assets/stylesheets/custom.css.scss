@@ -42,7 +42,7 @@ textarea {
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
   font-family: "proxima-nova-condensed";
-  font-weight: 600;
+  font-weight: 400;
 }
 
 h1 {
@@ -59,7 +59,7 @@ h2 {
 
 p {
   font-size: 1.1em;
-  line-height: 1.7em;
+  line-height: 1.5;
   font-family: 'Rooney-web';
   color: #555;
 }
@@ -168,7 +168,7 @@ nav.user_menu {
       float: left;
       border-left: 1px solid #666;
       padding: 0 1em;
-      color: #aaa;
+      color: #d6d6d6;
       font-size: 1.2em;
       &:first-child {
         border-left: none;
@@ -186,7 +186,7 @@ header.main_menu {
       a {
         font-size: 20px;
         padding: 0px 20px;
-        color: #ddd;
+        color: #d6d6d6;
       }
     }
   }
@@ -238,7 +238,7 @@ header.main_menu {
     top: 0 !important;
     right: 200px !important;
     width: 23%;
-    background: RGBA(255,255,255,0.75);
+    background: RGBA(255,255,255,0.85);
 
     h4 {
       color: #555;
@@ -252,11 +252,12 @@ header.main_menu {
       color: #666;
       font-size: 1.2em;
       text-align: center;
+      line-height: 1.5;
     }
   }
 
   .carousel-control {
-    margin-top: 160px;
+    margin-top: 180px;
   }
 }
 

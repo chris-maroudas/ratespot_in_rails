@@ -6,19 +6,24 @@
           <%= submit_tag 'Search', id: 'submit_button' %>
       <% end %>
     </div>
-    <nav class='span8 user_menu'>
 
-      <ul>
-        <% if signed_in? %>
+    <% if signed_in? %>
+        <nav class='span7 offset1 user_menu'>
+          <ul>
             <li><%= current_user.name.titleize %></li>
             <li><%= link_to 'My Profile', user_path(current_user) %></li>
             <li><%= link_to 'Post a review', new_review_path %></li>
             <li><%= link_to 'Sign Out', signout_path, method: :delete %></li>
             <%= gravatar_for(current_user, size: 28) %>
-        <% else %>
+          </ul>
+        </nav>
+    <% else %>
+        <nav class='span3 offset5 user_menu'>
+          <ul>
             <li><%= link_to 'Sign in', signin_path %></li>
-        <% end %>
-      </ul>
+            <li><%= link_to 'Sign up', signup_path %></li>
+    <% end %>
+    </ul>
     </nav>
   </div>
 </header>
