@@ -2,28 +2,36 @@
 
 <!-- Slider space here -->
 <div class="container">
-  <div class="row">
-    <div class="span12">
+  <div id="myCarousel" class="carousel slide">
 
-      <div id="myCarousel" class="carousel slide">
+    <!-- Carousel items -->
+    <div class="carousel-inner">
+      <div class="active item"><%= image_tag 'slider3.jpg', width: 1000, height: 100 %>
+        <div class="carousel-caption">
+          <h4>Apple's Iphone exposed!</h4>
 
-        <!-- Carousel items -->
-        <div class="carousel-inner">
-          <div class="active item"><%= image_tag 'slider1.jpg', width: 900, height: 100 %>
-            <div class="carousel-caption">
-              <h4>Apple's Iphone exposed!</h4>
-
-              <p>Random Apple crap goes here, without much further adue.</p>
-            </div>
-          </div>
-          <div class="item"><%= image_tag 'slider2.jpg' %></div>
-          <div class="item"><%= image_tag 'slider3.jpg' %></div>
+          <p>Random Apple crap goes here, without much further adue.</p>
         </div>
-        <!-- Carousel nav -->
-        <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-        <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+      </div>
+      <div class="item"><%= image_tag 'slider2.jpg', width: 1000, height: 100 %>
+        <div class="carousel-caption">
+          <h4>Apple's Iphone exposed!</h4>
+
+          <p>Random Apple crap goes here, without much further adue.</p>
+        </div>
       </div>
 
+      <div class="item"><%= image_tag 'slider1.jpg' %></div>
+    </div>
+    <!-- Carousel nav -->
+    <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+  </div>
+
+
+  <div class="row">
+    <div class="span9">
+      <h1> CONTENT</h1>
     </div>
     <div class="span3">
       <h2>Latest reviews</h2>

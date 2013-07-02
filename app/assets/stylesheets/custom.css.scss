@@ -207,8 +207,9 @@ header.main_menu {
     background-color: RGBA(255,255,255,0.1);
     padding: 0.3em;
     font-family: 'proxima-nova-condensed';
-    border: 1px solid #777;
+    border: 1px solid #555;
     color: #ccc;
+    outline: none;
   }
 
   #submit_button {
@@ -224,6 +225,40 @@ header.main_menu {
 
 
 
+/* carousel */
+
+#myCarousel {
+  height:450px !important;
+  width:100% !important;
+  overflow: hidden;
+  position: relative;
+
+  .carousel-caption {
+    position: absolute !important;
+    top: 0 !important;
+    right: 200px !important;
+    width: 23%;
+    background: RGBA(255,255,255,0.75);
+
+    h4 {
+      color: #555;
+      font-size: 2.8em;
+      line-height: 1;
+      text-align: center;
+      margin-bottom: 0.7em;
+      font-weight: 600;
+    }
+    p {
+      color: #666;
+      font-size: 1.2em;
+      text-align: center;
+    }
+  }
+
+  .carousel-control {
+    margin-top: 160px;
+  }
+}
 
 
 
