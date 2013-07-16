@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
 	validates :password_confirmation, presence: true
 
 
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 
   default_scope order: 'created_at DESC'
 
