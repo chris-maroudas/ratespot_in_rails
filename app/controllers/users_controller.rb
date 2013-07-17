@@ -19,7 +19,6 @@ class UsersController < ApplicationController
 	end
 
 	def index
-
 	end
 
 	def show
@@ -52,3 +51,20 @@ class UsersController < ApplicationController
 		redirect_to root_path, notice: "You are not authorized to do that" unless current_user?(@user)
 	end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

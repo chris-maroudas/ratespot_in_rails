@@ -1,11 +1,13 @@
 class UserMailer < ActionMailer::Base
-  default from: "ratespot@example.com"
+
+	default from: "ratespot@example.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
   #   en.user_mailer.registered_user.subject
   #
+
   def registered_user(user)
 	  @user = user
 	  @greeting = "Hi, #{@user.name}"
