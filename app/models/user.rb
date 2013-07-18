@@ -30,9 +30,9 @@ class User < ActiveRecord::Base
 	validates :password, presence: true, length: { minimum: 6 }
 	validates :password_confirmation, presence: true
 
+  # If a user deletes himself, destroy all the associated content
   has_many :reviews, dependent: :destroy
-
-  default_scope order: 'created_at DESC'
+	has_many :articles, dependent: :destroy
 
 
   private

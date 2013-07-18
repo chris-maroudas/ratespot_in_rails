@@ -2,7 +2,10 @@ Ratespotgr::Application.routes.draw do
 
 
 
+  resources :articles
   resources :reviews
+
+
   match 'reviews/category/:category', to: 'reviews#category', as: 'category_reviews'
 
 
