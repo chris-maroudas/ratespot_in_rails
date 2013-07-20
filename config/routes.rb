@@ -2,6 +2,8 @@ Ratespotgr::Application.routes.draw do
 
 
 
+  get "comments/create"
+
   resources :articles
   resources :reviews
 
@@ -17,6 +19,7 @@ Ratespotgr::Application.routes.draw do
 	root to: 'static_pages#home'
 
   resources :sessions, only: [:new, :create, :destroy]
+	resources :comments, only:  [:create]
 
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'

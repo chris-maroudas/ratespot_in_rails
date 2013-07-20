@@ -1,0 +1,7 @@
+<p><%= @review.content %></p>
+<% if signed_in? %>
+	<%= render 'comments/form'  %>
+<% else %>
+	<p>You must <%= link_to 'log in', signin_path %> to comment</p>
+<% end %>
+<%= render @comments %>

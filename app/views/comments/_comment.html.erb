@@ -1,0 +1,5 @@
+<div class="comment">
+ <h4><%= comment.user.name %></h4>
+  <date><%= time_ago_in_words(comment.created_at) %> ago</date>
+  <p><%= comment.content %></p>
+</div>

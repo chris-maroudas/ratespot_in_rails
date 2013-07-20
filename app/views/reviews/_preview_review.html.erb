@@ -1,0 +1,12 @@
+<h2><%= object.product.titleize %></h2>
+<h3><%= object.title.titleize %></h3>
+<p> <%= truncate(object.content, length: 50, separator: ' ') %>  </p>
+<p> Posted by <%= link_to object.user.name.titleize, object.user %>
+  <%= gravatar_for(object.user) %>
+  <date><%= time_ago_in_words(object.created_at) %> ago</date>
+</p>
+<%= link_to 'Read review', object %>
+<% if current_user?(object.user) %>
+   |  <%= link_to 'Edit', edit_review_path(object) %>
+   |  <%= link_to 'Delete', object, method: :delete, confirm: 'Are you sure?' %>
+<% end %>

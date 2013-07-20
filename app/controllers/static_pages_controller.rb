@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
 
 	def home
-		@reviews = Review.limit(10).all
+		@reviews = Review.recent
   end
 
   def contact

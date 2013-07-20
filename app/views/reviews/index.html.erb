@@ -4,9 +4,7 @@
     <div class="span12">
 
       <% @reviews.each do |review| %>
-
-          <%= render 'shared/preview_review', object: review %>
-
+          <%= render 'reviews/preview_review', object: review %>
       <% end %>
 
       <%= will_paginate %>

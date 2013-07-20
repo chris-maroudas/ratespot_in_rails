@@ -25,6 +25,13 @@ class ReviewsController < ApplicationController
 		#Instance var @review, defined at correct_user
 	end
 
+	def show
+		@review = Review.find(params[:id])
+		@comment = @review.comments.build # Initializing @comment for the comments/form partial
+		@comments = @review.comments.includes(:user)
+	end
+
+
 	def update
 		if @review.update_attributes(params[:review])
 			redirect_to root_path

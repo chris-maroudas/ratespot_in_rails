@@ -27,6 +27,7 @@ class Review < ActiveRecord::Base
 
 	# associations
 	belongs_to :user
+  has_many :comments
 
 	# scopes
   default_scope order: 'created_at DESC'

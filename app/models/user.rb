@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   # If a user deletes himself, destroy all the associated content
   has_many :reviews, dependent: :destroy
 	has_many :articles, dependent: :destroy
-
+	has_many :comments, dependent: :destroy
 
   private
 
