@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
 	before_filter :signed_in_user, only: [:show, :edit, :update, :destroy, :reviews]
-	before_filter :correct_user, only: [:edit, :update, :destroy] #defines also an instance var for those
+	# defines the @user instance var
+	before_filter :correct_user, only: [:edit, :update, :destroy]
 
 	def new
 		redirect_to root_url if signed_in?
@@ -50,6 +51,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		redirect_to root_path, notice: "You are not authorized to do that" unless current_user?(@user)
 	end
+
 end
 
 

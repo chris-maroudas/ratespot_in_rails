@@ -46,7 +46,7 @@ describe User do
 
 	describe "when email format is invalid" do
 		before { @user.email = 'gfd@gmail,v' }
-		it {should_not be_valid }
+		it { should_not be_valid }
 	end
 
 
@@ -86,10 +86,9 @@ describe User do
 	end
 
 	describe "with a password that's too short" do
-		before { @user.password = @user.password_confirmation = 'v' * 5  }
-		it { should_not be_valid  }
+		before { @user.password = @user.password_confirmation = 'v' * 5 }
+		it { should_not be_valid }
 	end
-
 
 
 	# Authentication testing
@@ -101,7 +100,7 @@ describe User do
 
 
 		describe "with valid password" do
-			it { should == found_user.authenticate(@user.password)  }
+			it { should == found_user.authenticate(@user.password) }
 		end
 
 		describe "with invalid password" do

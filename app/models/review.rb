@@ -16,6 +16,7 @@
 class Review < ActiveRecord::Base
   attr_accessible :category, :content, :product, :rating, :title
 
+  # validations
   validates :title, presence: true, length: { in: 8..60 }
   validates :content, presence: true, length: { minimum: 80 }
 	validates :rating, presence: true, inclusion: (1..5).to_a, numericality: { only_integer: true }
@@ -24,12 +25,15 @@ class Review < ActiveRecord::Base
   validates :category, presence: true, inclusion: ['cpu', 'gpu', 'storage', 'motherboard', 'monitor']
 
 
-
+	# associations
 	belongs_to :user
 
+	# scopes
   default_scope order: 'created_at DESC'
+  scope :recent, order('created_at DESC').limit(10)
 
 
+	# callbacks
   before_save :prepare_data
 
 
