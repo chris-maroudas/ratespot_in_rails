@@ -1,0 +1,14 @@
+<% provide(:title, 'Reviews') %>
+<div class="container">
+  <div class="row">
+    <div class="span12">
+
+      <% @articles.each do |review| %>
+          <%= render 'articles/preview_article', object: review %>
+      <% end %>
+
+      <%= will_paginate %>
+    </div>
+  </div>
+</div>
+

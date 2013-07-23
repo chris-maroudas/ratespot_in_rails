@@ -1,0 +1,15 @@
+<%= form_for(@article) do |f|  %>
+
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+
+    <%= f.label :image_url %>
+    <%= f.text_field :image_url %>
+
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+
+    <%= f.submit "Send", class: "btn btn-large btn-primary" %>
+<% end %>

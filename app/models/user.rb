@@ -7,18 +7,19 @@
 #  email           :string(255)
 #  password_digest :string(255)
 #  remember_token  :string(255)
+#  article_author  :boolean          default(FALSE)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation
+  attr_accessible :email, :name, :password, :password_confirmation, :article_author
 
 	has_secure_password
 
   # callbacks
   before_validation :prepare_email
-  before_save :create_remember_token
+  before_save :create_remember_token, :check_if_article_author
 
   after_update :send_update_email
   after_save :send_register_email
@@ -35,7 +36,16 @@ class User < ActiveRecord::Base
 	has_many :articles, dependent: :destroy
 	has_many :comments, dependent: :destroy
 
+  # users that are allowed to post articles
+  ARTICLE_AUTHORS = %w[chris_maroudas@gmail.com grigoria_pont@gmail.com]
+
   private
+
+  def check_if_article_author
+		if ARTICLE_AUTHORS.include?(self.email)
+			self.article_author = true
+		end
+  end
 
 	def prepare_email
 		self.email = self.email.strip.downcase if self.email

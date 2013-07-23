@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130720003344) do
+ActiveRecord::Schema.define(:version => 20130723012537) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20130720003344) do
     t.string   "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "image_url"
   end
 
   create_table "comments", :force => true do |t|
@@ -27,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20130720003344) do
     t.integer  "review_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "article_id"
   end
 
   create_table "reviews", :force => true do |t|
@@ -45,8 +47,9 @@ ActiveRecord::Schema.define(:version => 20130720003344) do
     t.string   "email"
     t.string   "password_digest"
     t.string   "remember_token"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.boolean  "article_author",  :default => false
   end
 
 end
