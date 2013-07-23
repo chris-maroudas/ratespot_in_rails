@@ -16,21 +16,21 @@ class User < ActiveRecord::Base
 
 	has_secure_password
 
+  # callbacks
   before_validation :prepare_email
   before_save :create_remember_token
-
 
   after_update :send_update_email
   after_save :send_register_email
 
+  # validations
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-
-	validates :name, presence: true, length: { maximum: 40 }
+  validates :name, presence: true, length: { maximum: 40 }
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 	validates :password, presence: true, length: { minimum: 6 }
 	validates :password_confirmation, presence: true
 
-  # If a user deletes himself, destroy all the associated content
+  # associations
   has_many :reviews, dependent: :destroy
 	has_many :articles, dependent: :destroy
 	has_many :comments, dependent: :destroy

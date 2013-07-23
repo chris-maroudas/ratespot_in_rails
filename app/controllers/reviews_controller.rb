@@ -31,7 +31,6 @@ class ReviewsController < ApplicationController
 		@comments = @review.comments.includes(:user)
 	end
 
-
 	def update
 		if @review.update_attributes(params[:review])
 			redirect_to root_path

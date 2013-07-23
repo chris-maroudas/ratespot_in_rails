@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 
-	before_filter :signed_in_user # a non signed in user, cannot post a comment
+	before_filter :signed_in_user # a non signed in user, cannot create a comment
 
 	def create
 		@comment = Comment.new(params[:comment])
@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
 			render 'comments/_form'
 		end
 
-  end
+	end
+
 
 end

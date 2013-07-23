@@ -1,7 +1,20 @@
-<p><%= @review.content %></p>
-<% if signed_in? %>
-	<%= render 'comments/form'  %>
-<% else %>
-	<p>You must <%= link_to 'log in', signin_path %> to comment</p>
-<% end %>
-<%= render @comments %>
+<% provide(:title, @review.title) %>
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <h2>Product reviewed: <%= @review.product %></h2>
+      <h3><%= @review.title.titleize %></h3>
+      <p><%= @review.content %></p>
+      <h4><%= gravatar_for(@review.user) %>Posted by <%=link_to @review.user.name.titleize, @review.user %>, <%= time_ago_in_words(@review.created_at) %> ago</h4>
+
+
+      <% if signed_in? %>
+          <%= render 'comments/form' %>
+      <% else %>
+          <p>You must <%= link_to 'log in', signin_path %> to comment</p>
+      <% end %>
+
+      <%= render @comments %>
+    </div>
+  </div>
+</div>

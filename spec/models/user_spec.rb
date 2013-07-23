@@ -24,8 +24,9 @@ describe User do
 	it { should respond_to :password }
 	it { should respond_to :password_confirmation }
 	it { should respond_to :remember_token }
-	it { should respond_to(:authenticate) }
-	it { should respond_to(:reviews) }
+	it { should respond_to :authenticate }
+	it { should respond_to :reviews }
+	it { should respond_to :comments }
 
 
 	describe "when name is not present" do
@@ -95,7 +96,7 @@ describe User do
 
 	describe "return value of authenticate method" do
 
-		before { @user.save } #Authenticate method works on saved to the Db items
+		before { @user.save } #Authenticate method works on saved to the DB items
 		let(:found_user) { User.find_by_email(@user.email) }
 
 

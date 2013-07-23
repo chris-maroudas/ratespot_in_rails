@@ -11,7 +11,7 @@
 #
 
 class Comment < ActiveRecord::Base
-  attr_accessible :content, :review_id, :user_id
+  attr_accessible :content, :review_id
 
 	# validations
   validates :user_id, presence: true
