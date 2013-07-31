@@ -15,7 +15,7 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation, :article_author
 
-	has_secure_password
+  has_secure_password
 
   # callbacks
   before_validation :prepare_email
@@ -28,13 +28,13 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :name, presence: true, length: { maximum: 40 }
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
-	validates :password, presence: true, length: { minimum: 6 }
-	validates :password_confirmation, presence: true
+  validates :password, presence: true, length: { minimum: 6 }
+  validates :password_confirmation, presence: true
 
   # associations
   has_many :reviews, dependent: :destroy
-	has_many :articles, dependent: :destroy
-	has_many :comments, dependent: :destroy
+  has_many :articles, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   # users that are allowed to post articles
   ARTICLE_AUTHORS = %w[chris_maroudas@gmail.com grigoria_pont@gmail.com]
@@ -42,27 +42,27 @@ class User < ActiveRecord::Base
   private
 
   def check_if_article_author
-		if ARTICLE_AUTHORS.include?(self.email)
-			self.article_author = true
-		end
+    if ARTICLE_AUTHORS.include?(self.email)
+      self.article_author = true
+    end
   end
 
-	def prepare_email
-		self.email = self.email.strip.downcase if self.email
-	end
+  def prepare_email
+    self.email = self.email.strip.downcase if self.email
+  end
 
   def create_remember_token
-	  self.remember_token = SecureRandom.urlsafe_base64
+    self.remember_token = SecureRandom.urlsafe_base64
   end
 
   # Mailing
 
-	def send_update_email
-		UserMailer.updated_user(self).deliver
-	end
+  def send_update_email
+    UserMailer.updated_user(self).deliver
+  end
 
-	def send_register_email
-		UserMailer.registered_user(self).deliver
-	end
+  def send_register_email
+    UserMailer.registered_user(self).deliver
+  end
 
 end
