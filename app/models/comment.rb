@@ -12,29 +12,27 @@
 #
 
 class Comment < ActiveRecord::Base
-	attr_accessible :content, :review_id, :article_id
+  attr_accessible :content, :review_id, :article_id
 
-	# callbacks
-	before_validation :review_or_article_id_present?
+  # callbacks
+  before_validation :review_or_article_id_present?
 
-	# validations
-	validates :user_id, presence: true
-	validates :content, presence: true, length: { minimum: 6 }
+  # validations
+  validates :user_id, presence: true
+  validates :content, presence: true, length: { minimum: 6 }
 
-	# associations
-	belongs_to :user
-	belongs_to :review
-	belongs_to :article
+  # associations
+  belongs_to :user
+  belongs_to :review
+  belongs_to :article
 
-	#scopes
-	default_scope order: 'created_at DESC'
+  #scopes
+  default_scope order: 'created_at DESC'
 
-	private
+  private
 
-	def review_or_article_id_present?
-		if self.review_id.nil? && self.article_id.nil?
-			return false
-		end
-	end
+  def review_or_article_id_present?
+    false if self.review_id.nil? && self.article_id.nil?
+  end
 
 end
