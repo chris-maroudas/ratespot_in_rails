@@ -3,17 +3,14 @@
   <div class="row">
     <div class="span12">
       <h3><%= @article.title.titleize %></h3>
+
       <p><%= @article.content %></p>
-      <h4><%= gravatar_for(@article.user) %>Posted by <%=link_to @article.user.name.titleize, @article.user %>, <%= time_ago_in_words(@article.created_at) %> ago</h4>
+      <h4><%= gravatar_for(@article.user) %>Posted by <%= link_to @article.user.name.titleize, @article.user %>, <%= time_ago_in_words(@article.created_at) %>
+        ago</h4>
 
+      <%= render partial: 'comments/form' %>
 
-      <% if signed_in? %>
-          <%= render 'comments/form' %>
-      <% else %>
-          <p>You must <%= link_to 'log in', signin_path %> to comment</p>
-      <% end %>
-
-      <%= render @comments unless @comments.empty? %>
+      <%= render @article.comments.includes(:user) %>
     </div>
   </div>
 </div>

@@ -1,36 +1,36 @@
+<% if signed_in? %>
+    <!-- Form for article comments -->
+    <% unless @comment.article_id.nil? %>
 
-<!-- Form for article comments -->
-<% unless @comment.article_id.nil? %>
+        <%= form_for [@article, @comment] do |f| %>
 
-    <%= form_for(@comment) do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>
 
-        <%= render 'shared/error_messages', object: f.object %>
+            <%= f.label :content %>
+            <%= f.text_area :content %>
 
-        <%= f.label :content %>
-        <%= f.text_area :content %>
+            <%= f.submit %>
 
-        <%= f.hidden_field :article_id %>
-
-        <%= f.submit %>
-
-    <% end %>
-
-<% end %>
-
-<!-- Form for review comments -->
-<% unless @comment.review_id.nil? %>
-
-    <%= form_for(@comment) do |f| %>
-
-        <%= render 'shared/error_messages', object: f.object %>
-
-        <%= f.label :content %>
-        <%= f.text_area :content %>
-
-        <%= f.hidden_field :review_id %>
-
-        <%= f.submit %>
+        <% end %>
 
     <% end %>
 
+    <!-- Form for review comments -->
+    <% unless @comment.review_id.nil? %>
+
+        <%= form_for [@review, @comment] do |f| %>
+
+            <%= render 'shared/error_messages', object: f.object %>
+
+            <%= f.label :content %>
+            <%= f.text_area :content %>
+
+            <%= f.submit %>
+
+        <% end %>
+
+    <% end %>
+
+<% else %>
+    <p>You must <%= link_to 'log in', signin_path %> to comment</p>
 <% end %>

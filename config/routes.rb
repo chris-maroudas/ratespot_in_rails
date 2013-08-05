@@ -1,11 +1,22 @@
 Ratespotgr::Application.routes.draw do
 
-  resources :articles
-  resources :reviews
+  # articles
+  resources :articles do
+    resources :comments, only:  [:create]
+  end
+
+
+
+  # reviews
+  resources :reviews do
+    resources :comments, only:  [:create]
+  end
 
   match 'reviews/category/:category', to: 'reviews#category', as: 'category_reviews'
 
-	# sub page
+
+
+	# users
   resources :users do
 	  get :reviews, on: :member
   end
@@ -13,13 +24,14 @@ Ratespotgr::Application.routes.draw do
 	# root page
 	root to: 'static_pages#home'
 
-  resources :sessions, only: [:new, :create, :destroy]
-	resources :comments, only:  [:create]
 
-  # authentications
+  # authentications & registrations
+  resources :sessions, only: [:new, :create, :destroy]
+
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
+
 
   # static pages
 	match '/about', to: 'static_pages#about'
@@ -28,6 +40,8 @@ Ratespotgr::Application.routes.draw do
   # search
 	match '/search', to: 'reviews#search'
 
+
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

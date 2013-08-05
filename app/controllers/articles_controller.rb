@@ -25,7 +25,6 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @comment = @article.comments.build # Initializing @comment for the comments/form partial
-    @comments = @article.comments.includes(:user)
   end
 
 
