@@ -35,7 +35,6 @@ textarea {
 
 .span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11, .span12 {
   padding: 1em;
-  float: left !important;
 }
 
 /* typography */
@@ -167,7 +166,7 @@ nav.user_menu {
       float: left;
       border-left: 1px solid #666;
       padding: 0 1em;
-      color: #d6d6d6;
+      color: #d5d5d5;
       font-size: 1.2em;
       &:first-child {
         border-left: none;
@@ -183,9 +182,13 @@ header.main_menu {
     li {
       float: left;
       a {
-        font-size: 20px;
+        font-size: 1.5em;
+        font-weight: 400;
         padding: 0px 20px;
-        color: #d6d6d6;
+        color: #d5d5d5;
+        &:hover {
+          color: #8f8f8f;
+        }
       }
     }
   }
@@ -254,8 +257,6 @@ header.main_menu {
   }
 }
 
-
-
 /* Preview / Reviews */
 
 h2.productTitle {
@@ -271,6 +272,9 @@ h3.reviewTitle, h3.reviewTitle a {
   color: #555;
   font-weight: 700;
   margin-bottom: 0.8em;
+  &:hover {
+    color: #111;
+  }
 }
 
 a#author {
@@ -278,6 +282,41 @@ a#author {
   color: #2295ab;
 }
 
+p.commentsCount {
+  font-size: 0.8em;
+  color: #333;
+}
+
+img.preview {
+  margin-bottom: 1em;
+}
+
+div.userOptions {
+  background-color: #666666;
+  padding: 0.5em;
+  a {
+    font-size: 1.4em;
+    color: #27b4cd;
+    margin-left: 2.4em;
+  }
+}
+
+
+
+
+/* To be changed by Grigoria */
+
+div.preview_container {
+  overflow: auto;
+}
+
+div.preview_review {
+  overflow: auto;
+}
+
+
+
+/* Sidebar */
 
 aside {
   background-color: #777;
@@ -290,11 +329,13 @@ aside {
     border-bottom: 1px solid #ccc;
   }
   ul {
+    list-style-type: none;
     li {
       a {
-        color: #72e6f7;
-        font-size: 1.2em;
+        color: #66cfde;
+        font-size: 1.1em;
       }
+      margin-bottom: 0.7em;
     }
   }
 }

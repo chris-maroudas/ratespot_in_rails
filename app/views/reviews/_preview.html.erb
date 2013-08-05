@@ -1,7 +1,8 @@
-<div class="span4">
+<div class="span4 preview_review">
   <h2 class="productTitle"><%= review.product.titleize %></h2>
 
   <h3 class="reviewTitle"><%= link_to review.title.titleize, review %></h3>
+  <%= image_tag(review.image_url, alt: review.product, class: "preview") %>
 
   <p> <%= truncate(review.content, length: 200, separator: ' ') %>  </p>
 
@@ -9,10 +10,12 @@
     <date><em><%= time_ago_in_words(review.created_at) %> ago</em></date>
   </p>
 
-  <p><%= pluralize(review.comments.count, 'comment') %></p>
+  <p class="commentsCount"><%= pluralize(review.comments.count, 'comment') %></p>
   <% if current_user?(review.user) %>
-      <%= link_to 'Edit', edit_review_path(review) %>
-      |  <%= link_to 'Delete', review, method: :delete, confirm: 'Are you sure?' %>
+      <div class="userOptions">
+        <%= link_to 'Edit', edit_review_path(review) %>
+        <%= link_to 'Delete', review, method: :delete, confirm: 'Are you sure?' %>
+      </div>
   <% end %>
 
 </div>

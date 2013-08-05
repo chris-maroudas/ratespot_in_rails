@@ -14,10 +14,10 @@
 #
 
 class Review < ActiveRecord::Base
-  attr_accessible :category, :content, :product, :rating, :title
+  attr_accessible :category, :content, :product, :rating, :title, :image_url
 
   # validations
-  validates :title, presence: true, length: { in: 8..60 }
+  validates :title, presence: true, length: { in: 8..100 }
   validates :content, presence: true, length: { minimum: 80 }
   validates :rating, presence: true, inclusion: (1..5).to_a, numericality: { only_integer: true }
   validates :user_id, presence: true
@@ -31,7 +31,7 @@ class Review < ActiveRecord::Base
 
   # scopes
   default_scope order: 'created_at DESC'
-  scope :recent, order('created_at DESC').limit(10)
+  scope :recent, order('created_at DESC').limit(6)
 
 
   # callbacks

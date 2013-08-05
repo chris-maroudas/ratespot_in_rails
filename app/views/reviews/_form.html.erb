@@ -27,5 +27,8 @@
     <%= f.radio_button :rating, 4 %> Good
     <%= f.radio_button :rating, 5 %> Excellent
 
+    <%= f.label :image_url %>
+    <%= f.text_field :image_url %>
+
     <%= f.submit "Send", class: "btn btn-large btn-primary" %>
 <% end %>

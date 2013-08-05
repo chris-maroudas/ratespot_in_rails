@@ -13,7 +13,7 @@
   <% if @reviews.any? %>
       <ul>
         <% @reviews.each do |review| %>
-            <li><%= link_to review.product, review %></li>
+            <li><%= link_to review.title, review %></li>
         <% end %>
       </ul>
   <% end %>
