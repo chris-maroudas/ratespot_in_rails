@@ -2,11 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="span12">
-
-      <% @reviews.each do |review| %>
-          <%= render 'reviews/preview_review', object: review %>
-      <% end %>
-
+          <%= render partial: 'preview', collection: @reviews, as: :review %>
       <%= will_paginate %>
     </div>
   </div>

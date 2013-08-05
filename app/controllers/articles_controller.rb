@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   before_filter :allowed_to_post, only: [:new, :edit, :update, :destroy, :create]
 
   def index
-    @articles = Article.recent.includes(:user).paginate(page: params[:page], per_page: 4)
+    @articles = Article.includes(:user).paginate(page: params[:page], per_page: 4)
   end
 
   def new
@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
     @article = current_user.articles.build(params[:article])
     if @article.save
       flash[:success] = 'Article posted!'
-      redirect_to root_url
+      redirect_to @article
     else
       render 'new'
     end

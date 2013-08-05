@@ -21,8 +21,8 @@ class User < ActiveRecord::Base
   before_validation :prepare_email
   before_save :create_remember_token, :check_if_article_author
 
-  after_update :send_update_email
   after_save :send_register_email
+  after_update :send_update_email
 
   # validations
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   private
 
   def check_if_article_author
-    if ARTICLE_AUTHORS.include?(self.email)
+    if ARTICLE_AUTHORS.include?(email)
       self.article_author = true
     end
   end

@@ -13,7 +13,7 @@
           <p>You must <%= link_to 'log in', signin_path %> to comment</p>
       <% end %>
 
-      <%= render @comments %>
+      <%= render @comments unless @comments.empty? %>
     </div>
   </div>
 </div>

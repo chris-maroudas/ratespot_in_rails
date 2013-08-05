@@ -32,7 +32,11 @@ class Comment < ActiveRecord::Base
   private
 
   def review_or_article_id_present?
-    false if self.review_id.nil? && self.article_id.nil?
+    false if review_id.nil? && article_id.nil?
+  end
+
+  def prepare_content
+    self.content = content.strip.downcase
   end
 
 end

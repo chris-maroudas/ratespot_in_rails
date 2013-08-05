@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
   def create
     @review = current_user.reviews.build(params[:review])
     if @review.save
-      redirect_to root_path
+      redirect_to @review
       flash[:success] = "Thank you for your review"
     else
       render 'new'
@@ -33,7 +33,7 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update_attributes(params[:review])
-      redirect_to root_path
+      redirect_to @review
       flash[:success] = "Edit successful"
     else
       render 'edit'

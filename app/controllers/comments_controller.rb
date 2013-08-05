@@ -1,13 +1,13 @@
 class CommentsController < ApplicationController
 
-  before_filter :signed_in_user # a non signed in user, cannot create a comment
+  before_filter :signed_in_user  # a non signed in user, cannot create a comment
 
   def create
     @comment = Comment.new(params[:comment])
     @comment.user_id = current_user.id
 
     if @comment.save
-      redirect_to request.referer
+      redirect_to @comment.article
       flash[:success] = "Comment posted"
     else
       render 'comments/_form'

@@ -1,9 +1,12 @@
+<% provide(:title, 'Reviews') %>
 <% if @reviews.any? %>
-
-    <% @reviews.each do |review| %>
-        <%= render 'reviews/preview_review', object: review %>
-    <% end %>
-
-    <%= link_to 'Back to profile', @user %>
-	<%= will_paginate @reviews %>
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <%= render partial: 'reviews/preview', collection: @reviews, as: :review %>
+          <%= link_to 'Back to profile', @user %>
+          <%= will_paginate @reviews %>
+        </div>
+      </div>
+    </div>
 <% end %>

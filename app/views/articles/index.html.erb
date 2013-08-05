@@ -1,12 +1,8 @@
-<% provide(:title, 'Reviews') %>
+<% provide(:title, 'Articles') %>
 <div class="container">
   <div class="row">
     <div class="span12">
-
-      <% @articles.each do |review| %>
-          <%= render 'articles/preview_article', object: review %>
-      <% end %>
-
+          <%= render partial: 'articles/preview', collection: @articles, as: :article %>
       <%= will_paginate %>
     </div>
   </div>
