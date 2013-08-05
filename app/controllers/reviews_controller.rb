@@ -18,7 +18,7 @@ class ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.includes(:user).paginate(page: params[:page], per_page: 3)
+    @reviews = Review.includes(:user).paginate(page: params[:page], per_page: 6)
   end
 
   def edit
