@@ -1,22 +1,5 @@
 <% provide(:title, "Technology community reviews") %>
-
-<div class="container">
-
   <%= render 'slider' %>
-
-  <div class="row">
-    <div class="span9">
-      <h1> CONTENT</h1>
-    </div>
-    <div class="span3">
-      <h2>Latest reviews</h2>
-      <% if @reviews.any? %>
-          <ul>
-            <% @reviews.each do |review| %>
-                <li><%= link_to review.product, review %></li>
-            <% end %>
-          </ul>
-      <% end %>
-    </div>
-  </div>
+<div class="row">
+  <%= render partial: 'reviews/preview', collection: @reviews, as: :review %>
 </div>

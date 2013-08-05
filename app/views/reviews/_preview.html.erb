@@ -1,12 +1,18 @@
-<h2><%= review.product.titleize %></h2>
-<h3><%= review.title.titleize %></h3>
-<p> <%= truncate(review.content, length: 50, separator: ' ') %>  </p>
-<p> Posted by <%= link_to review.user.name.titleize, review.user %>
-  <%= gravatar_for(review.user) %>
-  <date><%= time_ago_in_words(review.created_at) %> ago</date>
-</p>
-<%= link_to 'Read review', review %>
-<% if current_user?(review.user) %>
-    |  <%= link_to 'Edit', edit_review_path(review) %>
-    |  <%= link_to 'Delete', review, method: :delete, confirm: 'Are you sure?' %>
-<% end %>
+  <div class="span3">
+    <h2><%= review.product.titleize %></h2>
+
+    <h3><%= review.title.titleize %></h3>
+
+    <p> <%= truncate(review.content, length: 200, separator: ' ') %>  </p>
+
+    <p> Posted by <%= link_to review.user.name.titleize, review.user %>
+      <%= gravatar_for(review.user) %>
+      <date><%= time_ago_in_words(review.created_at) %> ago</date>
+    </p>
+    <%= link_to 'Read review', review %>
+    <% if current_user?(review.user) %>
+        |  <%= link_to 'Edit', edit_review_path(review) %>
+        |  <%= link_to 'Delete', review, method: :delete, confirm: 'Are you sure?' %>
+    <% end %>
+  </div>
+

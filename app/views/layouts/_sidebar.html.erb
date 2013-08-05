@@ -1,0 +1,20 @@
+<div class="span3">
+
+  <h2>Latest articles</h2>
+  <% if @articles.any? %>
+      <ul>
+        <% @articles.each do |article| %>
+            <li><%= link_to article.title, article %></li>
+        <% end %>
+      </ul>
+  <% end %>
+
+  <h2>Latest reviews</h2>
+  <% if @reviews.any? %>
+      <ul>
+        <% @reviews.each do |review| %>
+            <li><%= link_to review.product, review %></li>
+        <% end %>
+      </ul>
+  <% end %>
+</div>

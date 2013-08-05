@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
 
   def home
-    @reviews = Review.recent
+    @reviews = Review.all
     @articles = Article.for_slider
   end
 

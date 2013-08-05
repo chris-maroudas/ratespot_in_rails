@@ -6,7 +6,6 @@ Ratespotgr::Application.routes.draw do
   end
 
 
-
   # reviews
   resources :reviews do
     resources :comments, only:  [:create]
@@ -15,11 +14,11 @@ Ratespotgr::Application.routes.draw do
   match 'reviews/category/:category', to: 'reviews#category', as: 'category_reviews'
 
 
-
 	# users
   resources :users do
 	  get :reviews, on: :member
   end
+
 
 	# root page
 	root to: 'static_pages#home'
@@ -41,7 +40,7 @@ Ratespotgr::Application.routes.draw do
 	match '/search', to: 'reviews#search'
 
 
-  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

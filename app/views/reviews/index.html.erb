@@ -1,10 +1,6 @@
 <% provide(:title, 'Reviews') %>
-<div class="container">
-  <div class="row">
-    <div class="span12">
-          <%= render partial: 'preview', collection: @reviews, as: :review %>
-      <%= will_paginate %>
-    </div>
-  </div>
+<div class="row">
+  <%= render partial: 'preview', collection: @reviews, as: :review %>
+  <%= will_paginate %>
 </div>
 
