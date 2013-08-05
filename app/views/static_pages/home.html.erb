@@ -1,5 +1,16 @@
 <% provide(:title, "Technology community reviews") %>
   <%= render 'slider' %>
-<div class="row">
-  <%= render partial: 'reviews/preview', collection: @reviews, as: :review %>
+
+<div class="row-fluid">
+  <div class="span9">
+    <div class="row-fluid">
+      <%= render partial: 'reviews/preview', collection: @reviews, as: :review %>
+    </div>
+
+  </div>
+
+  <%= render 'layouts/sidebar' %>
 </div>
+
+
+
