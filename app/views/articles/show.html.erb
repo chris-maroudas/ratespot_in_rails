@@ -9,6 +9,14 @@
   <h4><%= gravatar_for(@article.user, size: 50) %> by <%= link_to @article.user.name.titleize, @article.user %></h4>
   <br />
   <hr/>
+
+  <p>
+    Tags:
+    <% @article.tags.each do |tag| %>
+        <%= link_to tag.name, tag_path(tag) %>
+    <% end %>
+  </p>
+
   <%= render partial: 'comments/form' %>
 
   <%= render @article.comments.includes(:user) %>

@@ -39,7 +39,8 @@ Ratespotgr::Application.routes.draw do
   # search
 	match '/search', to: 'reviews#search'
 
-
+  # tags
+  resources :tags
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

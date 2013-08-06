@@ -1,0 +1,12 @@
+<% provide(:title, @tag.name) %>
+<div class="row-fluid">
+  <div class="span12">
+
+    <h3>Articles tagged with <em><%= @tag.name %></em></h3>
+
+
+    <%= render partial: 'articles/preview', collection: @articles, as: :article %>
+    <%= will_paginate @articles %>
+  </div>
+
+</div>

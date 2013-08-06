@@ -12,7 +12,7 @@
 #
 
 class Article < ActiveRecord::Base
-  attr_accessible :content, :title, :image_url,  :user_id
+  attr_accessible :content, :title, :image_url,  :user_id, :tag_list
 
   # validations
   validates :title, presence: true, length: { in: 8..60 }
@@ -33,6 +33,19 @@ class Article < ActiveRecord::Base
 
   # callbacks
   before_save :prepare_data
+
+
+  def tag_list
+    tags.collect do |tag|
+      tag.name
+    end.join(", ")
+  end
+
+  def tag_list=(tags_string)
+    tag_names = tags_string.split(",").collect{|s| s.strip.downcase}.uniq # Create an array with the unique, normalized tags received
+    new_or_found_tags = tag_names.collect { |name| Tag.find_or_create_by_name(name) } # Create the tags, if they don't exist
+    self.tags = new_or_found_tags # and associate them with this article
+  end
 
 
   private
