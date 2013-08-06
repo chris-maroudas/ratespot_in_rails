@@ -2,14 +2,11 @@
 
     <%= render 'shared/error_messages', object: f.object %>
 
-
     <%= f.label :title %>
     <%= f.text_field :title %>
 
     <%= f.label :content %>
     <%= f.text_area :content %>
-
-
 
     <%= f.label :category %>
     <%= f.radio_button :category, "cpu" %> Processors
@@ -21,7 +18,8 @@
     <%= f.label :product %>
     <%= f.text_field :product %>
 
-    <%= f.radio_button :rating, 1 %> Worst thing every buyed
+    <%= f.label 'Rating' %>
+    <%= f.radio_button :rating, 1 %> Worst thing ever
     <%= f.radio_button :rating, 2 %> Bad
     <%= f.radio_button :rating, 3 %> Average
     <%= f.radio_button :rating, 4 %> Good

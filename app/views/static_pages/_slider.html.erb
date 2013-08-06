@@ -3,27 +3,16 @@
   <!-- Carousel items -->
   <div class="carousel-inner">
 
-
-
-    <div class="active item"><%= image_tag 'slider1.jpg', width: 1080, height: 100 %>
-      <div class="carousel-caption">
-        <h4>Apple's Iphone exposed!</h4>
-
-        <p>Random Apple crap goes here, without much further adue.</p>
-      </div>
-    </div>
-
+    <% i = 0 %>
     <% @articles.each do |article| %>
-        <div class="item"><%= image_tag article.image_url, width: 1080, height: 100 %>
+        <div class="<%= 'active' unless i!= 0 %> item"><%= image_tag article.image_url, width: 1080, height: 100 %>
           <div class="carousel-caption">
             <h4><%= article.title %></h4>
             <p><%= truncate(article.content, length: 180, separator: ' ') %></p>
           </div>
         </div>
+        <% i += 1 %>
     <% end %>
-
-
-
 
   </div>
 

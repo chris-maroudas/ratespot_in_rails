@@ -1,12 +1,7 @@
 <% provide(:title, 'Reviews') %>
 <% if @reviews.any? %>
-    <div class="container">
-      <div class="row">
-        <div class="span12">
-          <%= render partial: 'reviews/preview', collection: @reviews, as: :review %>
-          <%= link_to 'Back to profile', @user %>
-          <%= will_paginate @reviews %>
-        </div>
-      </div>
+    <div class="row-fluid">
+      <%= render partial: 'reviews/preview', collection: @reviews, as: :review %>
+      <%= will_paginate @reviews %>
     </div>
 <% end %>

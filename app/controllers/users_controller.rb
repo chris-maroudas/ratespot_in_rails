@@ -44,7 +44,7 @@ class UsersController < ApplicationController
 
 	def reviews
 		@user = User.find(params[:id])
-		@reviews = @user.reviews.includes(:user).paginate(page: params[:page], per_page: 4)
+		@reviews = @user.reviews.includes(:user).paginate(page: params[:page], per_page: 6)
 	end
 
 	def correct_user

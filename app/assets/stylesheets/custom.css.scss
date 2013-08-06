@@ -302,7 +302,6 @@ div.userOptions {
   }
 }
 
-
 div.preview_container {
 }
 
@@ -357,6 +356,43 @@ p.comment {
   width: 15em;
   padding: 1em;
 }
+
+/* inputs */
+
+input[type="text"], input[type="password"] {
+  display: block;
+}
+
+input[type="radio"] {
+  display: inline-block;
+  margin-left: 1.5em;
+  vertical-align: baseline;
+}
+
+input[type="submit"] {
+  display: block;
+}
+
+label {
+  margin-top: 1.3em;
+  font-family: proxima-nova-condensed;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #444;
+}
+
+input[type="submit"]#submit_button,input[type="text"]#search_field {
+  display: inline !important;
+}
+
+
+div.pagination {
+  clear: both;
+  display: block !important;
+  padding-top: 3em;
+  margin-left: 30em;
+}
+
 
 /* Sidebar */
 
