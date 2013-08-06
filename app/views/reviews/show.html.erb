@@ -1,17 +1,17 @@
 <% provide(:title, @review.title) %>
-<div class="container">
-  <div class="row">
-    <div class="span12">
-      <h2>Product reviewed: <%= @review.product %></h2>
 
-      <h3><%= @review.title.titleize %></h3>
+<div class="span12">
+  <h2 class="productTitle"><%= @review.product %></h2>
 
-      <p><%= @review.content %></p>
-      <h4><%= gravatar_for(@review.user) %>Posted by <%= link_to @review.user.name.titleize, @review.user %>, <%= time_ago_in_words(@review.created_at) %> ago</h4>
+  <h3 class="reviewTitle"><%= @review.title.titleize %></h3>
+  <p>Posted <em> <%= time_ago_in_words(@review.created_at) %> ago</em> in <em><%= @review.category.upcase %></em></p>
+  <%= image_tag @review.image_url, alt: @review.product, class: 'review' %>
+  <p class="content"><%= @review.content.gsub(/(?:\n\r?|\r\n?)/, '<br>').html_safe %></p>
+  <hr/>
+  <h4><%= gravatar_for(@review.user, size: 50) %> by <%= link_to @review.user.name.titleize, @review.user %></h4>
+  <br />
+  <hr/>
+  <%= render partial: 'comments/form' %>
 
-      <%= render partial: 'comments/form' %>
-
-      <%= render @review.comments.includes(:user) %>
-    </div>
-  </div>
+  <%= render @review.comments.includes(:user) %>
 </div>

@@ -1,16 +1,15 @@
 <% provide(:title, @article.title) %>
-<div class="container">
-  <div class="row">
-    <div class="span12">
-      <h3><%= @article.title.titleize %></h3>
 
-      <p><%= @article.content %></p>
-      <h4><%= gravatar_for(@article.user) %>Posted by <%= link_to @article.user.name.titleize, @article.user %>, <%= time_ago_in_words(@article.created_at) %>
-        ago</h4>
+<div class="span12">
+  <h3 class="reviewTitle"><%= @article.title.titleize %></h3>
+  <p>Posted <em> <%= time_ago_in_words(@article.created_at) %> ago</em></p>
+  <%= image_tag @article.image_url, alt: @article.title, class: 'review' %>
+  <p class="content"><%= @article.content.gsub(/(?:\n\r?|\r\n?)/, '<br>').html_safe %></p>
+  <hr/>
+  <h4><%= gravatar_for(@article.user, size: 50) %> by <%= link_to @article.user.name.titleize, @article.user %></h4>
+  <br />
+  <hr/>
+  <%= render partial: 'comments/form' %>
 
-      <%= render partial: 'comments/form' %>
-
-      <%= render @article.comments.includes(:user) %>
-    </div>
-  </div>
+  <%= render @article.comments.includes(:user) %>
 </div>

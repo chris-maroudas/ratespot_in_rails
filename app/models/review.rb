@@ -41,7 +41,7 @@ class Review < ActiveRecord::Base
   private
 
   def prepare_data
-    self.title = self.title.strip.downcase
+    self.title = self.title.strip
     self.content = self.content.strip
     self.product = self.product.strip.downcase
   end

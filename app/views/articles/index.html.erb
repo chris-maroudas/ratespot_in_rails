@@ -1,10 +1,9 @@
 <% provide(:title, 'Articles') %>
-<div class="container">
-  <div class="row">
-    <div class="span12">
-          <%= render partial: 'articles/preview', collection: @articles, as: :article %>
-      <%= will_paginate %>
-    </div>
+<div class="row-fluid">
+  <div class="span12">
+    <%= render partial: 'articles/preview', collection: @articles, as: :article %>
+    <%= will_paginate %>
   </div>
 </div>
+
 

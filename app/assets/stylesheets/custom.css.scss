@@ -267,7 +267,7 @@ h2.productTitle {
   margin-bottom: 1em;
 }
 
-h3.reviewTitle, h3.reviewTitle a {
+h3.previewTitle, h3.previewTitle a {
   font-size: 1.3em;
   color: #555;
   font-weight: 700;
@@ -289,6 +289,7 @@ p.commentsCount {
 
 img.preview {
   margin-bottom: 1em;
+  border: 1px solid #999;
 }
 
 div.userOptions {
@@ -302,10 +303,6 @@ div.userOptions {
 }
 
 
-
-
-/* To be changed by Grigoria */
-
 div.preview_container {
 }
 
@@ -313,14 +310,60 @@ div.preview_review {
   margin-left: 10px !important;
 }
 
+/* review */
 
+img.review {
+  border: 1px solid #999;
+  margin-bottom: 2em;
+}
+
+h3.reviewTitle {
+  font-size: 2.5em;
+  color: #555;
+  font-weight: 600;
+}
+
+p.content {
+  margin-bottom: 1em;
+}
+
+img.gravatar {
+  margin-right: 1em;
+  display: block;
+}
+
+textarea {
+  width: 18em;
+  height: 8em;
+  display: block;
+}
+
+container form {
+  margin-bottom: 40px;
+}
+
+em.time {
+  font-size: 0.7em;
+}
+
+.comment h4 {
+  font-size: 1.2em;
+}
+
+p.comment {
+  background-color: #888;
+  color: #f0f0f0;
+  border-radius: 1em;
+  width: 15em;
+  padding: 1em;
+}
 
 /* Sidebar */
 
 aside {
   background-color: #777;
   margin-top: -30px;
-  margin-left: 30px !important;
+  margin-left: 25px !important;
   width: 230px !important;
 
   h2 {
@@ -336,6 +379,8 @@ aside {
       a {
         color: #66cfde;
         font-size: 1.1em;
+        display: block;
+        width: 160px;
       }
       margin-bottom: 0.7em;
     }

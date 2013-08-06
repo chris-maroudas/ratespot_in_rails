@@ -1,12 +1,21 @@
-<h3><%= article.title.titleize %></h3>
-<p> <%= truncate(article.content, length: 50, separator: ' ') %>  </p>
-<p> Posted by <%= link_to article.user.name.titleize, article.user %>
-  <%= gravatar_for(article.user) %>
-  <date><%= time_ago_in_words(article.created_at) %> ago</date>
-</p>
-<%= link_to 'Read article', article %>
+<div class="span4 particle_article">
 
-<% if current_user?(article.user) %>
-    |  <%= link_to 'Edit', edit_article_path(article) %>
-    |  <%= link_to 'Delete', article, method: :delete, confirm: 'Are you sure?' %>
-<% end %>
+  <h3 class="particleTitle"><%= link_to article.title.titleize, article %></h3>
+  <%= image_tag(article.image_url, class: "particle") %>
+
+  <p> <%= truncate(article.content, length: 200, separator: ' ') %>  </p>
+
+  <p>by <em><%= link_to article.user.name.titleize, article.user, id: 'author' %></em><br/>
+    <date><em><%= time_ago_in_words(article.created_at) %> ago</em></date>
+  </p>
+
+  <p class="commentsCount"><%= pluralize(article.comments.count, 'comment') %></p>
+  <% if current_user?(article.user) %>
+      <div class="userOptions">
+        <%= link_to 'Edit', edit_article_path(article) %>
+        <%= link_to 'Delete', article, method: :delete, confirm: 'Are you sure?' %>
+      </div>
+  <% end %>
+
+</div>
+

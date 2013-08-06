@@ -28,6 +28,28 @@ class ArticlesController < ApplicationController
   end
 
 
+  def edit
+  end
+
+  def update
+    if @article.update_attributes(params[:article])
+      redirect_to root_path
+      flash[:success] = "Successful edit"
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    if @article.destroy
+      redirect_to root_path
+    else
+      flash[:error] = 'Failed to delete the article'
+      redirect_to root_path
+    end
+  end
+
   def correct_user
     @article = current_user.articles.find_by_id(params[:id]) # Check if the accessed review belongs to current user
     redirect_to root_path, notice: 'You are not authorized for that action' if @article.nil?
