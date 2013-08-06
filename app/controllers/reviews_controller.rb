@@ -53,6 +53,9 @@ class ReviewsController < ApplicationController
     @reviews = Review.search(params[:search])
   end
 
+
+  # callbacks
+
   def correct_user
     @review = current_user.reviews.find_by_id(params[:id]) # Check if the accessed review belongs to current user
     redirect_to root_path, notice: 'You are not authorized for that action' if @review.nil?

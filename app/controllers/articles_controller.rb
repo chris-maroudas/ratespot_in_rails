@@ -50,6 +50,9 @@ class ArticlesController < ApplicationController
     end
   end
 
+
+  # callbacks
+
   def correct_user
     @article = current_user.articles.find_by_id(params[:id]) # Check if the accessed review belongs to current user
     redirect_to root_path, notice: 'You are not authorized for that action' if @article.nil?
