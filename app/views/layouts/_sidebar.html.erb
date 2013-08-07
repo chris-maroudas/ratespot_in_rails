@@ -17,4 +17,15 @@
         <% end %>
       </ul>
   <% end %>
+
+  <h2>Tags</h2>
+
+  <p class="tags">
+    <% if @tags.any? %>
+        <% @tags.each do |tag| %>
+            <%= link_to tag.name, tag %>
+        <% end %>
+    <% end %>
+  </p>
+
 </aside>

@@ -1,0 +1,6 @@
+<% provide(:title, 'Reviews') %>
+
+<div class="row-fluid">
+  <%= render partial: 'preview', collection: @reviews, as: :review %>
+  <%= will_paginate %>
+</div>

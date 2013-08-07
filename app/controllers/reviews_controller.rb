@@ -46,7 +46,7 @@ class ReviewsController < ApplicationController
   end
 
   def category
-    @reviews = Review.includes(:user).where(category: params[:category]).paginate(page: params[:page], per_page: 1)
+    @reviews = Review.includes(:user).where(category: params[:category]).paginate(page: params[:page], per_page: 6)
   end
 
   def search

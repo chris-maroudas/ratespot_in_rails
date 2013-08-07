@@ -1,5 +1,7 @@
 Ratespotgr::Application.routes.draw do
 
+  get "search/index"
+
   # articles
   resources :articles do
     resources :comments, only:  [:create]
@@ -20,6 +22,9 @@ Ratespotgr::Application.routes.draw do
   end
 
 
+  # tags
+  resources :tags
+
 	# root page
 	root to: 'static_pages#home'
 
@@ -37,10 +42,7 @@ Ratespotgr::Application.routes.draw do
 	match '/contact', to: 'static_pages#contact'
 
   # search
-	match '/search', to: 'reviews#search'
-
-  # tags
-  resources :tags
+	match '/search', to: 'search#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

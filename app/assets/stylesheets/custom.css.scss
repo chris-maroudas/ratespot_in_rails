@@ -381,10 +381,9 @@ label {
   color: #444;
 }
 
-input[type="submit"]#submit_button,input[type="text"]#search_field {
+input[type="submit"]#submit_button, input[type="text"]#search_field {
   display: inline !important;
 }
-
 
 div.pagination {
   clear: both;
@@ -392,7 +391,6 @@ div.pagination {
   padding-top: 3em;
   margin-left: 30em;
 }
-
 
 /* Sidebar */
 
@@ -417,8 +415,22 @@ aside {
         font-size: 1.1em;
         display: block;
         width: 160px;
+        &:hover {
+          color: #52a6b2;
+        }
       }
       margin-bottom: 0.7em;
+    }
+  }
+
+  p.tags {
+    padding: 1em;
+    a {
+      font-size: 1.2em;
+      color: #66cfde;
+      &:hover {
+        color: #52a6b2;
+      }
     }
   }
 }

@@ -11,10 +11,11 @@
 #  category   :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  image_url  :string(255)
 #
 
 class Review < ActiveRecord::Base
-  attr_accessible :category, :content, :product, :rating, :title, :image_url
+  attr_accessible :category, :content, :product, :rating, :title, :image_url, :tag_list
 
   # validations
   validates :title, presence: true, length: { in: 8..100 }
@@ -28,6 +29,8 @@ class Review < ActiveRecord::Base
   # associations
   belongs_to :user
   has_many :comments
+  has_many :taggings
+  has_many :tags, through: :taggings
 
   # scopes
   default_scope order: 'created_at DESC'
@@ -35,7 +38,20 @@ class Review < ActiveRecord::Base
 
 
   # callbacks
-  before_save :prepare_data
+  before_save :prepare_data, :tag_list_create
+
+
+  def tag_list
+    tags.collect do |tag|
+      tag.name
+    end.join(", ")
+  end
+
+  def tag_list_create
+    tag_names = product.split(" ").collect{|s| s.strip.downcase}.uniq # Create an array with the unique, splitted and normalized product name
+    new_or_found_tags = tag_names.collect { |name| Tag.find_or_create_by_name(name) } # Create the tags, if they don't exist
+    self.tags = new_or_found_tags # and associate them with this review
+  end
 
 
   private
@@ -44,11 +60,6 @@ class Review < ActiveRecord::Base
     self.title = self.title.strip
     self.content = self.content.strip
     self.product = self.product.strip.downcase
-  end
-
-  def self.search(term)
-    search_condition = "%" + term + "%"
-    find(:all, :conditions => ['title LIKE ? OR product LIKE?', search_condition, search_condition])
   end
 
 end

@@ -1,6 +1,6 @@
 <div class="span4 particle_article">
 
-  <h3 class="particleTitle"><%= link_to article.title.titleize, article %></h3>
+  <h3 class="previewTitle"><%= link_to article.title.titleize, article %></h3>
   <%= image_tag(article.image_url, class: "particle") %>
 
   <p> <%= truncate(article.content, length: 200, separator: ' ') %>  </p>
