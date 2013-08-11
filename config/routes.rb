@@ -38,8 +38,8 @@ Ratespotgr::Application.routes.draw do
 
 
   # static pages
-	match '/about', to: 'static_pages#about'
-	match '/contact', to: 'static_pages#contact'
+#	match '/about', to: 'static_pages#about'
+#	match '/contact', to: 'static_pages#contact'
 
   # search
 	match '/search', to: 'search#index'

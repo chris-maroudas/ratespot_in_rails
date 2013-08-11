@@ -6,10 +6,4 @@ class StaticPagesController < ApplicationController
     @tags = Tag.recent
   end
 
-  def contact
-  end
-
-  def about
-  end
-
 end
