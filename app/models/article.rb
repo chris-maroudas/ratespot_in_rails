@@ -51,7 +51,7 @@ class Article < ActiveRecord::Base
   private
 
   def check_if_image_url_is_valid
-    return false unless image_url.end_with?(".jpg", ".jpeg", ".png")
+    false unless image_url.end_with?(".jpg", ".jpeg", ".png")
   end
 
   def prepare_data
