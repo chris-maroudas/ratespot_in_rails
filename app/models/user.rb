@@ -18,8 +18,8 @@ class User < ActiveRecord::Base
   has_secure_password
 
   # callbacks
-  before_validation :prepare_email
-  before_save :create_remember_token, :check_if_article_author
+  before_validation :prepare_email, :check_if_article_author
+  before_save :create_remember_token
 
   after_save :send_register_email
   after_update :send_update_email
@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
   end
 
   def prepare_email
-    self.email = self.email.strip.downcase if self.email
+    self.email = email.strip.downcase if email
   end
 
   def create_remember_token

@@ -39,7 +39,7 @@ class Review < ActiveRecord::Base
 
   # callbacks
   before_save :prepare_data, :create_tag_list_from_product
-
+  before_validation :check_if_image_url_is_valid
 
   def tag_list
     tags.collect do |tag|
@@ -56,10 +56,14 @@ class Review < ActiveRecord::Base
 
   private
 
+  def check_if_image_url_is_valid
+    return false unless image_url.end_with?(".jpg", ".jpeg", ".png")
+  end
+
   def prepare_data
-    self.title = self.title.strip
-    self.content = self.content.strip
-    self.product = self.product.strip.downcase
+    self.title = title.strip
+    self.content = content.strip
+    self.product = product.strip.downcase
   end
 
 end

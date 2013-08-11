@@ -41,7 +41,7 @@ describe Review do
       it { should be_valid }
     end
 
-    describe "when no user_id is given" do
+    describe "when user_id is NOT given" do
       before { @review.user_id = nil }
       it { should_not be_valid }
     end
@@ -167,5 +167,24 @@ describe Review do
 
   end
 
+
+  describe "image_url" do
+
+    describe "when image url is blank" do
+      before { @review.image_url = " " }
+      it { should_not be_valid }
+    end
+
+    describe "when image url is too long" do
+      before { @review.image_url = "abc" * 500 + ".jpg" }
+      it { should_not be_valid }
+    end
+
+    describe "when image url doesn't end with valid file type" do
+      before { @review.image_url = "http://www.invalidplace.com/invalid_image.dat" }
+      it { should_not be_valid }
+    end
+
+  end
 
 end

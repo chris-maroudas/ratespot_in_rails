@@ -16,7 +16,7 @@ class Article < ActiveRecord::Base
 
   # validations
   validates :title, presence: true, length: { in: 8..60 }
-  validates :content, presence: true, length: { minimum: 80 }
+  validates :content, presence: true, length: { in: 80..6000 }
   validates :image_url, presence: true, length: { minimum: 4 }
   validates :user_id, presence: true
 
@@ -33,7 +33,7 @@ class Article < ActiveRecord::Base
 
   # callbacks
   before_save :prepare_data
-
+  before_validation :check_if_image_url_is_valid
 
   def tag_list
     tags.collect do |tag|
@@ -50,9 +50,13 @@ class Article < ActiveRecord::Base
 
   private
 
+  def check_if_image_url_is_valid
+    return false unless image_url.end_with?(".jpg", ".jpeg", ".png")
+  end
+
   def prepare_data
-    self.title = self.title.strip
-    self.content = self.content.strip
+    self.title = title.strip
+    self.content = content.strip
   end
 
 end
