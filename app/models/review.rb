@@ -19,7 +19,7 @@ class Review < ActiveRecord::Base
 
   # validations
   validates :title, presence: true, length: { in: 8..100 }
-  validates :content, presence: true, length: { minimum: 80 }
+  validates :content, presence: true, length: { in: 80..6000 }
   validates :rating, presence: true, inclusion: (1..5).to_a, numericality: { only_integer: true }
   validates :user_id, presence: true
   validates :product, presence: true, length: { in: 5..80 }

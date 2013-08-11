@@ -27,6 +27,7 @@ describe User do
 	it { should respond_to :remember_token }
 	it { should respond_to :authenticate }
 	it { should respond_to :reviews }
+	it { should respond_to :articles }
 	it { should respond_to :comments }
 
 
@@ -66,7 +67,6 @@ describe User do
 			user_with_same_email.email = @user.email.upcase
 			user_with_same_email.save
 		end
-
 		it { should_not be_valid }
 	end
 
@@ -97,7 +97,7 @@ describe User do
 
 	describe "return value of authenticate method" do
 
-		before { @user.save } #Authenticate method works on saved to the DB items
+		before { @user.save } # need to save user to use the #authenticate method
 		let(:found_user) { User.find_by_email(@user.email) }
 
 
@@ -112,6 +112,20 @@ describe User do
 			specify { user_for_invalid_password.should be_false } #synonym to it. authentication returns false therefor the user should be false
 		end
 
-	end
+  end
+
+  # Article authors tests
+
+  describe "when email doesn't belong in authors list" do
+    it { should_not be_article_author }
+  end
+
+  describe "when email belongs to authors list" do
+    before do
+      @user.email = "chris_maroudas@gmail.com"
+      @user.save
+    end
+    it { should be_article_author }
+  end
 
 end
