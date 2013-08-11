@@ -40,6 +40,12 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
+    if current_user.destroy
+      redirect_to root_path, notice: 'Profile deleted'
+    else
+      render 'show'
+      flash[:error] = 'Profile failed to delete'
+    end
 	end
 
 	def reviews

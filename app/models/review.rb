@@ -24,7 +24,7 @@ class Review < ActiveRecord::Base
   validates :user_id, presence: true
   validates :product, presence: true, length: { in: 5..80 }
   validates :category, presence: true, inclusion: ['cpu', 'gpu', 'storage', 'motherboard', 'monitor']
-
+  validates :image_url, presence: true, length: { in: 4..200 }
 
   # associations
   belongs_to :user
@@ -38,7 +38,7 @@ class Review < ActiveRecord::Base
 
 
   # callbacks
-  before_save :prepare_data, :tag_list_create
+  before_save :prepare_data, :create_tag_list_from_product
 
 
   def tag_list
@@ -47,8 +47,8 @@ class Review < ActiveRecord::Base
     end.join(", ")
   end
 
-  def tag_list_create
-    tag_names = product.split(" ").collect{|s| s.strip.downcase}.uniq # Create an array with the unique, splitted and normalized product name
+  def create_tag_list_from_product
+    tag_names = product.split(" ").collect { |s| s.strip.downcase }.uniq # Create an array with the unique, splitted and normalized product name
     new_or_found_tags = tag_names.collect { |name| Tag.find_or_create_by_name(name) } # Create the tags, if they don't exist
     self.tags = new_or_found_tags # and associate them with this review
   end

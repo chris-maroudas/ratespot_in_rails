@@ -11,6 +11,10 @@
 class Tag < ActiveRecord::Base
   attr_accessible :name
 
+  # validations
+  validates :name, presence: true, length: { maximum: 60 }
+
+  # associations
   has_many :taggings
   has_many :articles, through: :taggings
   has_many :reviews, through: :taggings

@@ -24,8 +24,11 @@ class User < ActiveRecord::Base
   after_save :send_register_email
   after_update :send_update_email
 
-  # validations
+  # globals
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  ARTICLE_AUTHORS = %w[chris_maroudas@gmail.com grigoria_pont@gmail.com]   # users that are allowed to post articles
+
+  # validations
   validates :name, presence: true, length: { maximum: 40 }
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }
@@ -36,15 +39,11 @@ class User < ActiveRecord::Base
   has_many :articles, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  # users that are allowed to post articles
-  ARTICLE_AUTHORS = %w[chris_maroudas@gmail.com grigoria_pont@gmail.com]
 
   private
 
   def check_if_article_author
-    if ARTICLE_AUTHORS.include?(email)
-      self.article_author = true
-    end
+      self.article_author = true if ARTICLE_AUTHORS.include?(email)
   end
 
   def prepare_email
