@@ -13,10 +13,15 @@ require 'spec_helper'
 describe Tag do
 
   before { @tag = Tag.new(name: 'asus') }
+  subject { @tag }
 
   it { should respond_to :name }
   it { should respond_to :reviews }
   it { should respond_to :articles }
+
+  describe "with default values" do
+    it { should be_valid }
+  end
 
   describe "Name" do
 
@@ -25,7 +30,16 @@ describe Tag do
       it { should_not be_valid}
     end
 
+    describe "when name is too small" do
+      before { @tag.name = 'a' }
+      it { should_not be_valid }
+    end
+
+    describe "when name is blank" do
+      before { @tag.name = ' ' }
+      it { should_not be_valid }
+    end
 
   end
-  
+
 end
