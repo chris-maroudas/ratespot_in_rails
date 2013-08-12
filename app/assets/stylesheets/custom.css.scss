@@ -224,25 +224,34 @@ header.main_menu {
 /* carousel */
 
 #myCarousel {
-  height: 450px !important;
+  height: 500px !important;
   width: 1080px !important;
   overflow: hidden;
   position: relative;
+
+  img {
+    width: 900px !important;
+    height: 500px;
+   margin-left: 200px;
+  }
 
   .carousel-caption {
     position: absolute !important;
     top: 0 !important;
     right: 200px !important;
     width: 23%;
-    background: RGBA(255, 255, 255, 0.85);
+    background: RGBA(255, 255, 255, 0.95);
 
     h4 {
       color: #555;
-      font-size: 2.8em;
-      line-height: 1;
+      font-size: 2.2em;
+      line-height: 1.05;
       text-align: center;
       margin-bottom: 0.7em;
       font-weight: 600;
+      a {
+        color: #555;
+      }
     }
     p {
       color: #666;
@@ -306,7 +315,8 @@ div.preview_container {
 }
 
 div.preview_review {
-  margin-left: 10px !important;
+  float: left !important;
+  margin: 0 !important;
 }
 
 /* review */
