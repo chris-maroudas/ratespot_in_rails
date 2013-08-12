@@ -322,6 +322,24 @@ div.preview_review {
   margin: 0 !important;
 }
 
+ul.categories {
+  list-style-type: none;
+  li.category {
+    display: inline !important;
+    float: left;
+    font-size: 1.3em;
+    a {
+      display: block !important;
+      float: left;
+      padding: 8px;
+      background-color: #777;
+      color: #eee;
+      border-right: 1px solid #bbb;
+    }
+  }
+
+}
+
 /* review */
 
 img.review {

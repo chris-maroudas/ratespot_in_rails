@@ -18,7 +18,13 @@ class ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.includes(:user).paginate(page: params[:page], per_page: 6)
+
+    if params[:category]
+      @reviews = Review.where(category: params[:category]).includes(:user).paginate(page: params[:page], per_page: 6)
+    else
+      @reviews = Review.includes(:user).paginate(page: params[:page], per_page: 6)
+    end
+
   end
 
   def edit
@@ -45,9 +51,6 @@ class ReviewsController < ApplicationController
     flash[:notice] = 'Review deleted'
   end
 
-  def category
-    @reviews = Review.includes(:user).where(category: params[:category]).paginate(page: params[:page], per_page: 6)
-  end
 
   def search
     @reviews = Review.search(params[:search])

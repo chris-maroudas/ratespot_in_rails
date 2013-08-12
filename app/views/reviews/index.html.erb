@@ -1,6 +1,18 @@
 <% provide(:title, 'Reviews') %>
 
 <div class="row-fluid">
+  <ul class="categories span12">
+       <li>Browse by category</li>
+    <li class="category"><%= link_to 'All', reviews_path %></li>
+    <li class="category"><%= link_to 'Processors', reviews_path(category: 'cpu') %></li>
+    <li class="category"><%= link_to 'Graphics', reviews_path(category: 'gpu') %></li>
+    <li class="category"><%= link_to 'Storage', reviews_path(category: 'storage') %></li>
+    <li class="category"><%= link_to 'Motherboards', reviews_path(category: 'motherboard') %></li>
+    <li class="category"><%= link_to 'Monitors', reviews_path(category: 'monitor') %></li>
+  </ul>
+</div>
+
+<div class="row-fluid">
   <%= render partial: 'preview', collection: @reviews, as: :review %>
   <%= will_paginate %>
 </div>

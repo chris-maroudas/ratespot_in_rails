@@ -13,9 +13,6 @@ Ratespotgr::Application.routes.draw do
     resources :comments, only:  [:create]
   end
 
-  match 'reviews/category/:category', to: 'reviews#category', as: 'category_reviews'
-
-
 	# users
   resources :users do
 	  get :reviews, on: :member
