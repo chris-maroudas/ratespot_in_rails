@@ -17,7 +17,7 @@ class Article < ActiveRecord::Base
   # validations
   validates :title, presence: true, length: { in: 8..60 }
   validates :content, presence: true, length: { in: 80..6000 }
-  validates :image_url, presence: true, length: { minimum: 4 }
+  validates :image_url, presence: true, length: { in: 4..200 }
   validates :user_id, presence: true
 
   # scopes

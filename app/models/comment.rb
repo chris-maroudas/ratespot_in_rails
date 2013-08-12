@@ -19,7 +19,7 @@ class Comment < ActiveRecord::Base
 
   # validations
   validates :user_id, presence: true
-  validates :content, presence: true, length: { minimum: 6 }
+  validates :content, presence: true, length: { in: 8..300 }
 
   # associations
   belongs_to :user

@@ -12,7 +12,7 @@ class Tag < ActiveRecord::Base
   attr_accessible :name
 
   # validations
-  validates :name, presence: true, length: { maximum: 60 }
+  validates :name, presence: true, length: { in: 2..80 }
 
   # associations
   has_many :taggings
