@@ -17,7 +17,11 @@
     <% end %>
   </p>
 
+  <hr />
+
   <%= render partial: 'comments/form' %>
+
+  <hr />
 
   <%= render @article.comments.includes(:user) %>
 </div>

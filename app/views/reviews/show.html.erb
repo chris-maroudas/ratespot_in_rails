@@ -19,7 +19,10 @@
     <% end %>
   </p>
 
+  <hr />
+
   <%= render partial: 'comments/form' %>
+  <hr />
 
   <%= render @review.comments.includes(:user) %>
 </div>
