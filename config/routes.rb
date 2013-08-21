@@ -33,13 +33,14 @@ Ratespotgr::Application.routes.draw do
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
 
-
-  # static pages
-#	match '/about', to: 'static_pages#about'
-#	match '/contact', to: 'static_pages#contact'
-
+  
   # search
 	match '/search', to: 'search#index'
+
+  # disabled unless they're proven needed
+  #	match '/about', to: 'static_pages#about'
+  #	match '/contact', to: 'static_pages#contact'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
