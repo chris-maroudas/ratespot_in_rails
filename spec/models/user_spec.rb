@@ -70,6 +70,10 @@ describe User do
 		it { should_not be_valid }
 	end
 
+  describe "when email is taken from the admin" do
+    before { @user.email = "ratespot_admin@gmail.com" }
+    it { should_not be_valid }
+  end
 
 	describe "when password is not present" do
 		before { @user.password = @user.password_confirmation = " " }

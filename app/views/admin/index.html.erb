@@ -1,0 +1,13 @@
+<div class="row-fluid">
+
+  <div class="row-fluid">
+    <ul class="categories span12">
+      <li>Browse by category</li>
+      <li class="category"><%= link_to 'Pending', admin_path(approved: false) %></li>
+      <li class="category"><%= link_to 'Approved', admin_path %></li>
+    </ul>
+  </div>
+
+  <%= render partial: 'reviews/preview', collection: @reviews, as: :review %>
+  <%= will_paginate @reviews %>
+</div>

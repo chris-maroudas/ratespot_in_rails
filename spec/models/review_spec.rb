@@ -12,6 +12,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  image_url  :string(255)
+#  approved   :boolean          default(FALSE)
 #
 
 require 'spec_helper'

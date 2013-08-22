@@ -1,5 +1,11 @@
 Ratespotgr::Application.routes.draw do
 
+  get "admin/index"
+
+  get "admin/reviews"
+
+  get "admin/articles"
+
   get "search/index"
 
   # articles
@@ -36,6 +42,10 @@ Ratespotgr::Application.routes.draw do
   
   # search
 	match '/search', to: 'search#index'
+
+
+  # admin
+  match 'admin', to: 'admin#index'
 
   # disabled unless they're proven needed
   #	match '/about', to: 'static_pages#about'

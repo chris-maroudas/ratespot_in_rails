@@ -25,4 +25,6 @@
   <hr />
 
   <%= render @review.comments.includes(:user) %>
+
+  <%= render partial: 'admin_approval_form' if current_user.admin? %>
 </div>

@@ -9,13 +9,14 @@
 #  user_id    :integer
 #  product    :string(255)
 #  category   :string(255)
+#  approved   :boolean          default(FALSE)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  image_url  :string(255)
 #
 
 class Review < ActiveRecord::Base
-  attr_accessible :category, :content, :product, :rating, :title, :image_url, :tag_list
+  attr_accessible :category, :content, :product, :rating, :title, :image_url, :tag_list, :approved
 
   # validations
   validates :title, presence: true, length: { in: 8..100 }
@@ -25,6 +26,7 @@ class Review < ActiveRecord::Base
   validates :product, presence: true, length: { in: 5..80 }
   validates :category, presence: true, inclusion: ['cpu', 'gpu', 'storage', 'motherboard', 'monitor']
   validates :image_url, presence: true, length: { in: 4..200 }
+  validates :approved, inclusion: [true, false]
 
   # associations
   belongs_to :user
@@ -34,7 +36,7 @@ class Review < ActiveRecord::Base
 
   # scopes
   default_scope order: 'created_at DESC'
-  scope :recent, order('created_at DESC').limit(6)
+  scope :recent, where(approved: true).order('created_at DESC').limit(6)
 
 
   # callbacks

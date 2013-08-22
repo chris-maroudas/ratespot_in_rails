@@ -19,10 +19,10 @@ class ReviewsController < ApplicationController
 
   def index
 
-    if params[:category]
-      @reviews = Review.where(category: params[:category]).includes(:user).paginate(page: params[:page], per_page: 6)
+    if params[:category] && params[:category].in?(%w[cpu gpu storage monitor motherboard])
+      @reviews = Review.where(category: params[:category], approved: true).includes(:user).paginate(page: params[:page], per_page: 6)
     else
-      @reviews = Review.includes(:user).paginate(page: params[:page], per_page: 6)
+      @reviews = Review.where(approved: true).includes(:user).paginate(page: params[:page], per_page: 6)
     end
 
   end
@@ -37,6 +37,12 @@ class ReviewsController < ApplicationController
   end
 
   def update
+
+    # An admin might be issuing an UPDATE
+    # and in that case the @review defined in correct_user will be nil, since
+    # the review doesn't belong to this user
+    @review ||= Review.find(params[:id])
+
     if @review.update_attributes(params[:review])
       redirect_to @review
       flash[:success] = "Edit successful"
@@ -61,7 +67,7 @@ class ReviewsController < ApplicationController
 
   def correct_user
     @review = current_user.reviews.find_by_id(params[:id]) # Check if the accessed review belongs to current user
-    redirect_to root_path, notice: 'You are not authorized for that action' if @review.nil?
+    redirect_to root_path, notice: 'You are not authorized for that action' if @review.nil? && !current_user.admin?
   end
 
 end
