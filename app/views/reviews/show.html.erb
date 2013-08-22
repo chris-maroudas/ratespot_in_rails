@@ -6,7 +6,7 @@
   <h3 class="reviewTitle"><%= @review.title.titleize %></h3>
   <p>Posted <em> <%= time_ago_in_words(@review.created_at) %> ago</em> in <em><%= @review.category.upcase %></em></p>
   <%= image_tag @review.image_url, alt: @review.product, class: 'review' %>
-  <p class="content"><%= @review.content.gsub(/(?:\n\r?|\r\n?)/, '<br>').html_safe %></p>
+  <p class="content"><%= simple_format(h @review.content) %></p>
   <hr/>
   <h4><%= gravatar_for(@review.user, size: 50) %> by <%= link_to @review.user.name.titleize, @review.user %></h4>
   <br />

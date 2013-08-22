@@ -4,7 +4,7 @@
   <h3 class="reviewTitle"><%= @article.title.titleize %></h3>
   <p>Posted <em> <%= time_ago_in_words(@article.created_at) %> ago</em></p>
   <%= image_tag @article.image_url, alt: @article.title, class: 'review' %>
-  <p class="content"><%= @article.content.gsub(/(?:\n\r?|\r\n?)/, '<br>').html_safe %></p>
+  <p class="content"><%= simple_format(h @article.content) %></p>
   <hr/>
   <h4><%= gravatar_for(@article.user, size: 50) %> by <%= link_to @article.user.name.titleize, @article.user %></h4>
   <br />
