@@ -40,7 +40,7 @@ class ReviewsController < ApplicationController
 
     # An admin might be issuing an UPDATE
     # and in that case the @review defined in correct_user will be nil, since
-    # the review doesn't belong to this user
+    # the review doesn't belong to the current_user
     @review ||= Review.find(params[:id])
 
     if @review.update_attributes(params[:review])
@@ -63,7 +63,7 @@ class ReviewsController < ApplicationController
   end
 
 
-  # callbacks
+  # before filters
 
   def correct_user
     @review = current_user.reviews.find_by_id(params[:id]) # Check if the accessed review belongs to current user
