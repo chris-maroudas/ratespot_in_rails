@@ -17,13 +17,6 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  # callbacks
-  before_validation :prepare_email, :check_if_article_author
-  before_save :create_remember_token
-
-  after_save :send_register_email
-  after_update :send_update_email
-
   # globals
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   ARTICLE_AUTHORS = %w[chris_maroudas@gmail.com grigoria_pont@gmail.com]   # users that are allowed to post articles
@@ -38,6 +31,14 @@ class User < ActiveRecord::Base
   has_many :reviews, dependent: :destroy
   has_many :articles, dependent: :destroy
   has_many :comments, dependent: :destroy
+
+
+  # callbacks
+  before_validation :prepare_email, :check_if_article_author
+  before_save :create_remember_token
+
+  after_save :send_register_email
+  after_update :send_update_email
 
 
   # methods
