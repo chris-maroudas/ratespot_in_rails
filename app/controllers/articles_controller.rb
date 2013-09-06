@@ -23,8 +23,15 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
-    @comment = @article.comments.build # Initializing @comment for the comments/form partial
+    begin
+      @article = Article.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      logger.error "Attempt to access invalid review #{params[:id]}"
+      redirect_to root_path, notice: 'Article does not exist'
+    else
+      @comment = @article.comments.build # Initializing @comment for the comments/form partial
+      @comments = @article.comments.includes(:user)
+    end
   end
 
 

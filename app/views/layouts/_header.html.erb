@@ -1,7 +1,7 @@
 <header class="container top">
   <div class='row'>
     <div class="span4 search_bar">
-      <%= form_tag search_path do %>
+      <%= form_tag(search_path, method: :get) do %>
           <%= text_field_tag :search, params[:search], id: 'search_field' %>
           <%= submit_tag 'Search', id: 'submit_button' %>
       <% end %>

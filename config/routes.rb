@@ -1,13 +1,5 @@
 Ratespotgr::Application.routes.draw do
 
-  get "admin/index"
-
-  get "admin/reviews"
-
-  get "admin/articles"
-
-  get "search/index"
-
   # articles
   resources :articles do
     resources :comments, only:  [:create]
@@ -45,7 +37,13 @@ Ratespotgr::Application.routes.draw do
 
 
   # admin
-  match 'admin', to: 'admin#index'
+  match '/admin', to: 'admin#index'
+
+  get "admin/index"
+
+  get "admin/reviews"
+
+  get "admin/articles"
 
   # disabled unless they're proven needed
   #	match '/about', to: 'static_pages#about'

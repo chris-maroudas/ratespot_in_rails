@@ -32,8 +32,15 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @review = Review.find(params[:id])
-    @comment = @review.comments.build # Initializing @comment for the comments/form partial
+    begin
+      @review = Review.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      logger.error "Attempt to access invalid review #{params[:id]}"
+      redirect_to root_path, notice: 'Review does not exist'
+    else
+      @comment = @review.comments.build # Initializing @comment for the comments/form partial
+      @comments = @review.comments.includes(:user)
+    end
   end
 
   def update
