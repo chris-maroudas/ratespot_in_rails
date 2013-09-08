@@ -27,7 +27,7 @@ class ArticlesController < ApplicationController
       @article = Article.find(params[:id])
     rescue ActiveRecord::RecordNotFound
       logger.error "Attempt to access invalid review #{params[:id]}"
-      redirect_to root_path, notice: 'Article does not exist'
+      redirect_to root_url, notice: 'Article does not exist'
     else
       @comment = @article.comments.build # Initializing @comment for the comments/form partial
       @comments = @article.comments.includes(:user)
@@ -40,7 +40,7 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update_attributes(params[:article])
-      redirect_to root_path
+      redirect_to root_url
       flash[:success] = "Successful edit"
     else
       render 'edit'
@@ -50,10 +50,10 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     if @article.destroy
-      redirect_to root_path
+      redirect_to root_url
     else
       flash[:error] = 'Failed to delete the article'
-      redirect_to root_path
+      redirect_to root_url
     end
   end
 
@@ -62,11 +62,11 @@ class ArticlesController < ApplicationController
 
   def correct_user
     @article = current_user.articles.find_by_id(params[:id]) # Check if the accessed review belongs to current user
-    redirect_to root_path, notice: 'You are not authorized for that action' if @article.nil?
+    redirect_to root_url, notice: 'You are not authorized for that action' if @article.nil?
   end
 
   def allowed_to_post
-    redirect_to root_path, notice: 'You are not authorized for that action' unless current_user.article_author?
+    redirect_to root_url, notice: 'You are not authorized for that action' unless current_user.article_author?
   end
 
 end

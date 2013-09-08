@@ -36,7 +36,7 @@ class ReviewsController < ApplicationController
       @review = Review.find(params[:id])
     rescue ActiveRecord::RecordNotFound
       logger.error "Attempt to access invalid review #{params[:id]}"
-      redirect_to root_path, notice: 'Review does not exist'
+      redirect_to root_url, notice: 'Review does not exist'
     else
       @comment = @review.comments.build # Initializing @comment for the comments/form partial
       @comments = @review.comments.includes(:user)
@@ -60,7 +60,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review.destroy
-    redirect_to root_path
+    redirect_to root_url
     flash[:notice] = 'Review deleted'
   end
 
@@ -74,7 +74,7 @@ class ReviewsController < ApplicationController
 
   def correct_user
     @review = current_user.reviews.find_by_id(params[:id]) # Check if the accessed review belongs to current user
-    redirect_to root_path, notice: 'You are not authorized for that action' if @review.nil? && !current_user.admin?
+    redirect_to root_url, notice: 'You are not authorized for that action' if @review.nil? && !current_user.admin?
   end
 
 end
