@@ -18,13 +18,15 @@
 class Review < ActiveRecord::Base
   attr_accessible :category, :content, :product, :rating, :title, :image_url, :tag_list, :approved
 
+  CATEGORIES = %w[cpu gpu storage motherboard monitor]
+
   # validations
   validates :title, presence: true, length: { in: 8..100 }
   validates :content, presence: true, length: { in: 80..6000 }
   validates :rating, presence: true, inclusion: (1..5).to_a, numericality: { only_integer: true }
   validates :user_id, presence: true
   validates :product, presence: true, length: { in: 5..80 }
-  validates :category, presence: true, inclusion: ['cpu', 'gpu', 'storage', 'motherboard', 'monitor']
+  validates :category, presence: true, inclusion: CATEGORIES
   validates :image_url, presence: true, length: { in: 4..200 }
   validates :approved, inclusion: [true, false]
 
@@ -41,7 +43,7 @@ class Review < ActiveRecord::Base
 
   # callbacks
   before_save :prepare_data, :create_tag_list_from_product
-  before_validation :check_if_image_url_is_valid
+  before_validation :check_if_image_url_is_valid, :prepare_data
 
   def tag_list
     tags.collect do |tag|
@@ -66,6 +68,7 @@ class Review < ActiveRecord::Base
     self.title = title.strip
     self.content = content.strip
     self.product = product.strip.downcase
+    self.category = category.strip.downcase
   end
 
 end
